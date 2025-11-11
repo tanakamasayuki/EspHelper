@@ -2,14 +2,18 @@
 
 [日本語はこちら](README.ja.md)
 
-EspHelper is a collection of single-header Arduino helpers that expose selected ESP-IDF components with lightweight, idiomatic APIs. Use it when you want to keep the productivity of the Arduino core on ESP32 boards but still reach for ESP-IDF features such as the `espressif/json_generator` and `espressif/json_parser` components.
+EspHelper is a collection of single-header Arduino helpers that expose ESP-IDF capabilities with lightweight, idiomatic APIs. Drop the `.h` you need into a sketch whenever you want Arduino-style ergonomics but still reach for the power of the underlying ESP-IDF components.
 
 ## Features
 - Header-only wrappers: drop the `.h` file you need into a sketch without pulling extra dependencies.
 - Arduino-friendly defaults: utilities work with `Print`, `String`, and familiar Arduino idioms.
 - Works alongside the ESP-IDF components that are already bundled in current Arduino-ESP32 releases.
-- Covers both JSON generation (`EspHelperJsonGenerator.h`) and parsing (`EspHelperJsonParser.h`) with consistent Arduino-friendly APIs.
 - Examples kept minimal so you can copy/paste straight into an existing project.
+
+## Modules
+- `EspHelperJsonGenerator.h`: Arduino-style facade over `espressif/json_generator`, including static buffers, streaming, and reset patterns.
+- `EspHelperJsonParser.h`: Thin wrapper for `espressif/json_parser` that manages token buffers and exposes typed getters & navigation helpers.
+- `EspHelperRingbuf.h`: RAII helpers for FreeRTOS `ringbuf`, covering dynamic/static creation, ISR-safe send/receive, and auto-returned items.
 
 ## Requirements
 - Arduino core for ESP32 (v2.0.0 or newer) or a PlatformIO environment targeting `esp32`.
@@ -25,6 +29,8 @@ EspHelper is a collection of single-header Arduino helpers that expose selected 
 - `examples/JsonGenerator/StaticJsonBuffer` – builds a JSON document into a fixed stack buffer and prints it to `Serial`.
 - `examples/JsonGenerator/StreamingToSerial` – streams JSON tokens directly to `Serial` via the `Print`-based constructor for minimal RAM usage.
 - `examples/JsonParser/BasicParse` – tokenizes and queries nested JSON using `JsonParser`, including arrays, nested objects, and typed getters.
+- `examples/Ringbuf/ByteBuffer` – uses `EspHelper::Ringbuffer` to push formatted strings into a BYTEBUF ring buffer and read them back immediately.
+- `examples/Ringbuf/FixedStruct` – statically allocates a no-split ring buffer for fixed-size structs, ideal for sensor pipelines or task-to-task messaging.
 - More sketches can be added as additional helpers land; each example focuses on a single concern so you can copy only what you need.
 
 ## Roadmap
