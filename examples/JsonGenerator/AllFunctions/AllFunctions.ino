@@ -25,7 +25,7 @@ namespace
   {
     if (!generator.valid())
     {
-      Serial.println(F("JsonGenerator is not ready"));
+      Serial.println("JsonGenerator is not ready");
       return;
     }
 
@@ -86,7 +86,7 @@ namespace
 
   void demonstrateResetVariants()
   {
-    Serial.println(F("\n--- reset(json_gen_flush_cb_t, void*) ---"));
+    Serial.println("\n--- reset(json_gen_flush_cb_t, void*) ---");
     generator.reset(&serialFlush, &Serial);
     generator.startObject();
     generator.setString("mode", "flush-primary");
@@ -94,7 +94,7 @@ namespace
     generator.finish();
     Serial.println();
 
-    Serial.println(F("\n--- reset(char*, size_t, json_gen_flush_cb_t, void*) ---"));
+    Serial.println("\n--- reset(char*, size_t, json_gen_flush_cb_t, void*) ---");
     generator.reset(secondaryBuffer, kSecondarySize, &serialFlush, &Serial);
     generator.startObject();
     generator.setString("buffer", "secondary");
@@ -103,7 +103,7 @@ namespace
     generator.finish();
     Serial.println();
 
-    Serial.println(F("\n--- reset(char (&)[N]) template overload ---"));
+    Serial.println("\n--- reset(char (&)[N]) template overload ---");
     char tempBuffer[64];
     generator.reset(tempBuffer);
     generator.startArray();
@@ -117,7 +117,7 @@ namespace
 
   void demonstrateStreamingConstructor()
   {
-    Serial.println(F("\n--- JsonGenerator(Print&, chunkSize) ---"));
+    Serial.println("\n--- JsonGenerator(Print&, chunkSize) ---");
     EspHelper::JsonGenerator streamingJson(Serial, 64);
     streamingJson.startObject();
     streamingJson.setString("streaming", "enabled");

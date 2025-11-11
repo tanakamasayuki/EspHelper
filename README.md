@@ -2,12 +2,13 @@
 
 [日本語はこちら](README.ja.md)
 
-EspHelper is a collection of single-header Arduino helpers that expose selected ESP-IDF components with lightweight, idiomatic APIs. Use it when you want to keep the productivity of the Arduino core on ESP32 boards but still reach for ESP-IDF features such as the `espressif/json_generator` component.
+EspHelper is a collection of single-header Arduino helpers that expose selected ESP-IDF components with lightweight, idiomatic APIs. Use it when you want to keep the productivity of the Arduino core on ESP32 boards but still reach for ESP-IDF features such as the `espressif/json_generator` and `espressif/json_parser` components.
 
 ## Features
 - Header-only wrappers: drop the `.h` file you need into a sketch without pulling extra dependencies.
 - Arduino-friendly defaults: utilities work with `Print`, `String`, and familiar Arduino idioms.
 - Works alongside the ESP-IDF components that are already bundled in current Arduino-ESP32 releases.
+- Covers both JSON generation (`EspHelperJsonGenerator.h`) and parsing (`EspHelperJsonParser.h`) with consistent Arduino-friendly APIs.
 - Examples kept minimal so you can copy/paste straight into an existing project.
 
 ## Requirements
@@ -23,6 +24,7 @@ EspHelper is a collection of single-header Arduino helpers that expose selected 
 - `examples/JsonGenerator/AllFunctions` – exercises every `JsonGenerator` method (including reset variations and streaming) in one sketch.
 - `examples/JsonGenerator/StaticJsonBuffer` – builds a JSON document into a fixed stack buffer and prints it to `Serial`.
 - `examples/JsonGenerator/StreamingToSerial` – streams JSON tokens directly to `Serial` via the `Print`-based constructor for minimal RAM usage.
+- `examples/JsonParser/BasicParse` – tokenizes and queries nested JSON using `JsonParser`, including arrays, nested objects, and typed getters.
 - More sketches can be added as additional helpers land; each example focuses on a single concern so you can copy only what you need.
 
 ## Roadmap
