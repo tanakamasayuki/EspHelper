@@ -11,7 +11,7 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 - **最小限のサンプル**: まず動かすことに集中できるシンプルなexamplesを同梱。
 
 ## カテゴリ別リンク
-- **JSON**: [JsonGenerator](examples/JSON/JsonGenerator/README.ja.md)、[JsonParser](examples/JSON/JsonParser/README.ja.md)、[cJSON](examples/JSON/CJson/README.ja.md)
+- **JSON**: [JsonGenerator](examples/JSON/JsonGenerator/README.ja.md)、[JsonParser](examples/JSON/JsonParser/README.ja.md)、[cJSON](examples/JSON/CJson/README.ja.md)、[CBOR](examples/JSON/Cbor/README.ja.md)
 - **FreeRTOS**: [Task](examples/FreeRTOS/Task/README.ja.md)、[Queue](examples/FreeRTOS/Queue/README.ja.md)、[Semaphore](examples/FreeRTOS/Semaphore/README.ja.md)、[Mutex](examples/FreeRTOS/Mutex/README.ja.md)、[MessageBuffer](examples/FreeRTOS/MessageBuffer/README.ja.md)、[StreamBuffer](examples/FreeRTOS/StreamBuffer/README.ja.md)、[Ringbuffer](examples/FreeRTOS/Ringbuf/README.ja.md)
 - **Utility**: [QrCode](examples/Utility/QrCode/README.ja.md)、[Dsp](examples/Utility/Dsp/README.ja.md)、[Event](examples/Utility/Event/README.ja.md)、[Sodium](examples/Utility/Sodium/README.ja.md)、[RgbLed](examples/Utility/RgbLed/README.ja.md)
 - **Network**: [Mqtt](examples/Network/Mqtt/README.ja.md)、[HttpServer](examples/Network/HttpServer/README.ja.md)
@@ -21,6 +21,7 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 - `EspHelperJsonGenerator.h`: `espressif/json_generator`をArduino流のAPIで利用するためのラッパー。固定バッファ、ストリーミング、リセットパターンをカバー。
 - `EspHelperJsonParser.h`: `espressif/json_parser`を薄く包み、トークンバッファ管理と型付きゲッターを提供。
 - `EspHelperCJson.h`: ESP-IDFの`cJSON`をRAII化し、柔軟な編集や整形出力、再パースを安全に行えるようにするラッパー。
+- `EspHelperCbor.h`: `espressif/cbor` (TinyCBOR) をJSONライクなAPIで扱い、コンパクトなCBORバイナリを生成・解析できるヘルパー。
 - `EspHelperQrCode.h`: `espressif/qrcode`で生成したQRコードをキャプチャし、ASCII表示や任意ディスプレイ描画に利用しやすくするラッパー。
 - `EspHelperDsp.h`: `esp_dsp`のFFTやFIR APIをArduino向けにまとめたラッパー。Hannウィンドウ適用や遅延線管理も面倒を見ます。
 - `EspHelperEvent.h`: `esp_event`のイベントループ/ハンドラ登録/ポストをRAIIで扱えるヘルパー。

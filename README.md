@@ -11,7 +11,7 @@ EspHelper is a collection of single-header Arduino helpers that expose ESP-IDF c
 - Examples kept minimal so you can copy/paste straight into an existing project.
 
 ## Example Categories
-- **JSON**: [JsonGenerator](examples/JSON/JsonGenerator/README.md), [JsonParser](examples/JSON/JsonParser/README.md), [cJSON](examples/JSON/CJson/README.md)
+- **JSON**: [JsonGenerator](examples/JSON/JsonGenerator/README.md), [JsonParser](examples/JSON/JsonParser/README.md), [cJSON](examples/JSON/CJson/README.md), [CBOR](examples/JSON/Cbor/README.md)
 - **FreeRTOS**: [Task](examples/FreeRTOS/Task/README.md), [Queue](examples/FreeRTOS/Queue/README.md), [Semaphore](examples/FreeRTOS/Semaphore/README.md), [Mutex](examples/FreeRTOS/Mutex/README.md), [MessageBuffer](examples/FreeRTOS/MessageBuffer/README.md), [StreamBuffer](examples/FreeRTOS/StreamBuffer/README.md), [Ringbuffer](examples/FreeRTOS/Ringbuf/README.md)
 - **Utility**: [QrCode](examples/Utility/QrCode/README.md), [Dsp](examples/Utility/Dsp/README.md), [Event](examples/Utility/Event/README.md), [Sodium](examples/Utility/Sodium/README.md), [RgbLed](examples/Utility/RgbLed/README.md)
 - **Network**: [Mqtt](examples/Network/Mqtt/README.md), [HttpServer](examples/Network/HttpServer/README.md)
@@ -20,6 +20,7 @@ EspHelper is a collection of single-header Arduino helpers that expose ESP-IDF c
 - `EspHelperJsonGenerator.h`: Arduino-style facade over `espressif/json_generator`, including static buffers, streaming, and reset patterns.
 - `EspHelperJsonParser.h`: Thin wrapper for `espressif/json_parser` that manages token buffers and exposes typed getters & navigation helpers.
 - `EspHelperCJson.h`: RAII convenience layer for ESP-IDF's `cJSON`, enabling complex manipulations, parsing, and pretty-printing without manual memory handling.
+- `EspHelperCbor.h`: JSON-like builder/reader utilities on top of the ESP-IDF `espressif/cbor` (TinyCBOR) component so you can emit compact CBOR payloads.
 - `EspHelperQrCode.h`: Captures QR bitmaps generated via `espressif/qrcode` so you can render them as ASCII or paint them onto any display.
 - `EspHelperDsp.h`: Real-valued FFT and FIR helpers on top of `esp_dsp`, complete with Hann windows and FIR delay-line management.
 - `EspHelperEvent.h`: Minimal RAII interface around `esp_event`, covering default/custom loops, handler registration, and posting helpers.
