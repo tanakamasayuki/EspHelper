@@ -7,7 +7,8 @@ Utility examples collect helpers that do not fall into JSON or FreeRTOS buckets.
 - **QrCode (`EspHelperQrCode.h`)** – generate QR codes once and reuse the captured bitmap for ASCII output, serial printing, or custom displays such as M5Unified.
 - **Dsp (`EspHelperDsp.h`)** – real-valued FFT and FIR filters that wrap `esp_dsp` with Arduino-friendly buffers.
 - **Event (`EspHelperEvent.h`)** – manage `esp_event` loops, handlers, and postings with a minimal RAII wrapper.
+- **Mqtt (`EspHelperMqtt.h`)** – thin facade over `esp-mqtt` for quick publish/subscribe flows.
 - **RgbStrip (`EspHelperRgbStrip.h`)** – drive a strip of RGB LEDs chained on a single pin using a blocking API similar to Adafruit_NeoPixel, backed by repeated `rgbLedWrite()` calls.
 - **HttpServer (`EspHelperHttpServer.h`)** – register GET/POST routes with lambdas and send responses using helper methods like `sendText`/`sendJson`.
 
-See `QrCode/`, `Dsp/`, `Event/`, `RgbLed/`, and `HttpServer/` for concrete sketches.
+See `QrCode/`, `Dsp/`, `Event/`, `Mqtt/`, `RgbLed/`, and `HttpServer/` for concrete sketches.
