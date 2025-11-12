@@ -16,6 +16,7 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 - `EspHelperCJson.h`: ESP-IDFの`cJSON`をRAII化し、柔軟な編集や整形出力、再パースを安全に行えるようにするラッパー。
 - `EspHelperQrCode.h`: `espressif/qrcode`で生成したQRコードをキャプチャし、ASCII表示や任意ディスプレイ描画に利用しやすくするラッパー。
 - `EspHelperRingbuf.h`: FreeRTOSの`ringbuf`に対して所有権管理・RAII受信アイテム・ISR対応ヘルパーを提供。
+- `EspHelperRgbStrip.h`: `rgbLedWrite()`を用いて複数のRGB LEDを順次駆動するための簡易ストリップAPI。
 
 ## 必要環境
 - Arduino-ESP32 v2.0.0以降、またはPlatformIOの`framework = arduino`環境。
@@ -36,6 +37,8 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 - `examples/FreeRTOS/Ringbuf/FixedStruct` : 静的メモリ＋No-Splitリングバッファに固定サイズ構造体を流す例で、センサーデータの受け渡しなどに応用可能。
 - `examples/Utility/QrCode/AsciiConsole` : 生成したQRコードをASCIIアートとして`Serial`に表示する例。
 - `examples/Utility/QrCode/M5Display` : M5UnifiedデバイスへWi-Fi設定QRコードを描画する例。
+- `examples/Utility/RgbLed/SimpleStrip` : 1個のRGB LEDを順番に点灯させる最小例。
+- `examples/Utility/RgbLed/MultiStrip` : 3個のRGB LEDでカラーWipeや一括点灯を行う例。
 - それぞれ最小限のコードで構成されているため、必要な部分だけを既存スケッチにコピーできます。
 
 ## ライセンス
