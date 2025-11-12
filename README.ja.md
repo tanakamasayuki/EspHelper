@@ -10,6 +10,12 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 - **ESP-IDFコンポーネントを活用**: Arduino-ESP32にビルトイン済みのESP-IDFコンポーネントを手軽に呼び出し。
 - **最小限のサンプル**: まず動かすことに集中できるシンプルなexamplesを同梱。
 
+## カテゴリ別リンク
+- **JSON**: [JsonGenerator](examples/JSON/JsonGenerator/README.ja.md)、[JsonParser](examples/JSON/JsonParser/README.ja.md)、[cJSON](examples/JSON/CJson/README.ja.md)
+- **FreeRTOS**: [Ringbuffer](examples/FreeRTOS/Ringbuf/README.ja.md)
+- **Utility**: [QrCode](examples/Utility/QrCode/README.ja.md)、[RgbLed](examples/Utility/RgbLed/README.ja.md)
+- 各READMEにAPIリファレンスとサンプルコードがまとまっているので、必要なセクションへ直接アクセスしてください。
+
 ## 提供機能
 - `EspHelperJsonGenerator.h`: `espressif/json_generator`をArduino流のAPIで利用するためのラッパー。固定バッファ、ストリーミング、リセットパターンをカバー。
 - `EspHelperJsonParser.h`: `espressif/json_parser`を薄く包み、トークンバッファ管理と型付きゲッターを提供。
@@ -26,22 +32,6 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 ### Arduino IDE / Arduino CLI
 1. 本リポジトリを`~/Arduino/libraries/EspHelper`になるように配置します。
 2. スケッチで`src/`配下のヘッダーをインクルードします。利用するESP-IDFコンポーネントはArduinoコア側に既に同梱されているため、追加導入は不要です。
-
-## サンプルスケッチ
-- `examples/JSON/JsonGenerator/AllFunctions` : `JsonGenerator`の全メソッド（reset系やストリーミング含む）をまとめて試せる例。
-- `examples/JSON/JsonGenerator/StaticJsonBuffer` : 固定長バッファを使ってJSONを生成し、`Serial`へ出力する基本例。
-- `examples/JSON/JsonGenerator/StreamingToSerial` : `Print`ベースのコンストラクタでトークンを逐次`Serial`に流すストリーミング例。
-- `examples/JSON/JsonParser/BasicParse` : `JsonParser`でネストしたJSONを解析し、配列やオブジェクトから型付きで値を取得する例。
-- `examples/JSON/CJson/BuildAndParse` : cJSONラッパーでJSONを構築・整形・再パースする例。
-- `examples/FreeRTOS/Ringbuf/ByteBuffer` : `EspHelper::Ringbuffer`でBYTEBUFを生成し、文字列データをプッシュ＆読み戻しする例。
-- `examples/FreeRTOS/Ringbuf/FixedStruct` : 静的メモリ＋No-Splitリングバッファに固定サイズ構造体を流す例で、センサーデータの受け渡しなどに応用可能。
-- `examples/Utility/QrCode/AsciiConsole` : 生成したQRコードをASCIIアートとして`Serial`に表示する例。
-- `examples/Utility/QrCode/M5Display` : M5UnifiedデバイスへWi-Fi設定QRコードを描画する例。
-- `examples/Utility/RgbLed/SimpleStrip` : 1個のRGB LEDを順番に点灯させる最小例。
-- `examples/Utility/RgbLed/MultiStrip` : 3個のRGB LEDでカラーWipeや一括点灯を行う例。
-
-各ヘルパーの公開APIは [APIリファレンス](docs/API_REFERENCE.md) を参照してください。
-- それぞれ最小限のコードで構成されているため、必要な部分だけを既存スケッチにコピーできます。
 
 ## ライセンス
 MIT License（[LICENSE](LICENSE)参照）。
