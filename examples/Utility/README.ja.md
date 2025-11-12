@@ -8,6 +8,7 @@ JSONやFreeRTOSカテゴリに属さない汎用ユーティリティ向けヘ�
 - **Dsp (`EspHelperDsp.h`)** – `esp_dsp`のFFTやFIRフィルタAPIをArduino流に扱えるラッパー。
 - **Event (`EspHelperEvent.h`)** – `esp_event`のイベントループ／ハンドラ登録／ポストを簡単に扱えるラッパー。
 - **Sodium (`EspHelperSodium.h`)** – libsodium の乱数・`crypto_secretbox`・Ed25519署名を手軽に扱うラッパー。
+- **Lcd (`EspHelperLcd.h`)** – `esp_lcd` の ST7789 パネルをSPI経由で手軽に駆動するラッパー。
 - **RgbStrip (`EspHelperRgbStrip.h`)** – Arduinoコアの`rgbLedWrite()`を連続で呼び、1本のピンに直列接続した複数のRGB LEDを簡単に制御するラッパー。
 
-詳細は `QrCode/`、`Dsp/`、`Event/`、`Sodium/`、`RgbLed/` ディレクトリを参照してください。
+詳細は `QrCode/`、`Dsp/`、`Event/`、`Sodium/`、`Lcd/`、`RgbLed/` ディレクトリを参照してください。

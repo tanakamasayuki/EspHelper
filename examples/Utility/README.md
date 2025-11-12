@@ -8,6 +8,7 @@ Utility examples collect helpers that do not fall into JSON, FreeRTOS, or networ
 - **Dsp (`EspHelperDsp.h`)** – real-valued FFT and FIR filters that wrap `esp_dsp` with Arduino-friendly buffers.
 - **Event (`EspHelperEvent.h`)** – manage `esp_event` loops, handlers, and postings with a minimal RAII wrapper.
 - **Sodium (`EspHelperSodium.h`)** – thin wrappers over libsodium for randomness, `crypto_secretbox`, and Ed25519 signatures.
+- **Lcd (`EspHelperLcd.h`)** – helper around `esp_lcd` ST7789 panels with Arduino-friendly drawing helpers.
 - **RgbStrip (`EspHelperRgbStrip.h`)** – drive a strip of RGB LEDs chained on a single pin using a blocking API similar to Adafruit_NeoPixel, backed by repeated `rgbLedWrite()` calls.
 
-See `QrCode/`, `Dsp/`, `Event/`, `Sodium/`, and `RgbLed/` for concrete sketches.
+See `QrCode/`, `Dsp/`, `Event/`, `Sodium/`, `Lcd/`, and `RgbLed/` for concrete sketches.
