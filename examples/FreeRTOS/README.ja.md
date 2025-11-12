@@ -4,22 +4,13 @@
 
 本ディレクトリではFreeRTOS系のESP-IDF機能をArduinoから扱いやすくするヘルパーを紹介します。
 
-## サブディレクトリ
-- [Task](Task/README.ja.md)
-- [Queue](Queue/README.ja.md)
-- [Semaphore](Semaphore/README.ja.md)
-- [Mutex](Mutex/README.ja.md)
-- [MessageBuffer](MessageBuffer/README.ja.md)
-- [StreamBuffer](StreamBuffer/README.ja.md)
-- [Ringbuf](Ringbuf/README.ja.md)
-
-- **Task (`EspHelperTask.h`)** – `xTaskCreatePinnedToCore` をラップし、ラムダ関数でFreeRTOSタスクを起動/停止できる軽量ヘルパー。
-- **Queue (`EspHelperQueue.h`)** – FreeRTOSキューをテンプレートで扱えるラッパー。
-- **Semaphore (`EspHelperSemaphore.h`)** – バイナリ/カウンティングセマフォをRAIIで扱えるラッパー。
-- **Mutex (`EspHelperMutex.h`)** – ミューテックス（`xSemaphoreCreateMutex`）をシンプルなAPIで提供。
-- **MessageBuffer (`EspHelperMessageBuffer.h`)** – FreeRTOSメッセージバッファをラップし、可変長のメッセージをフレームごとに配送できます。
-- **StreamBuffer (`EspHelperStreamBuffer.h`)** – FreeRTOSのストリームバッファを扱うラッパー。バイトストリームをタスク/ISR間でやり取りする用途に最適です。
-- **Ringbuffer (`EspHelperRingbuf.h`)** – ESP-IDFコンポーネント`esp_ringbuf`をRAII化し、動的／静的メモリの生成、ゼロコピー送受信、ISR対応APIをまとめて提供します。データ形態に応じてBYTEBUF・NoSplit・AllowSplitを選択可能です。
+- **Task (`EspHelperTask.h`)** – `xTaskCreatePinnedToCore` をラップし、ラムダ関数でFreeRTOSタスクを起動/停止できる軽量ヘルパー。([Docs](Task/README.ja.md))
+- **Queue (`EspHelperQueue.h`)** – FreeRTOSキューをテンプレートで扱えるラッパー。([Docs](Queue/README.ja.md))
+- **Semaphore (`EspHelperSemaphore.h`)** – バイナリ/カウンティングセマフォをRAIIで扱えるラッパー。([Docs](Semaphore/README.ja.md))
+- **Mutex (`EspHelperMutex.h`)** – ミューテックス（`xSemaphoreCreateMutex`）をシンプルなAPIで提供。([Docs](Mutex/README.ja.md))
+- **MessageBuffer (`EspHelperMessageBuffer.h`)** – FreeRTOSメッセージバッファをラップし、可変長のメッセージをフレームごとに配送できます。([Docs](MessageBuffer/README.ja.md))
+- **StreamBuffer (`EspHelperStreamBuffer.h`)** – FreeRTOSのストリームバッファを扱うラッパー。バイトストリームをタスク/ISR間でやり取りする用途に最適です。([Docs](StreamBuffer/README.ja.md))
+- **Ringbuffer (`EspHelperRingbuf.h`)** – ESP-IDFコンポーネント`esp_ringbuf`をRAII化し、動的／静的メモリの生成、ゼロコピー送受信、ISR対応APIをまとめて提供します。データ形態に応じてBYTEBUF・NoSplit・AllowSplitを選択可能です。([Docs](Ringbuf/README.ja.md))
 
 ## 使い分けのヒント
 - タスク/ISR間に**単方向のバイトストリーム**を作りたい → StreamBuffer（`StreamBuffer/SimpleStreamBuffer`）。

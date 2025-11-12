@@ -4,16 +4,10 @@
 
 EspHelperに含まれるJSON関連（CBORのようにJSONライクな書き味を持つものも含む）ヘルパーを試すスケッチをまとめています。
 
-## サブディレクトリ
-- [JsonGenerator](JsonGenerator/README.ja.md)
-- [JsonParser](JsonParser/README.ja.md)
-- [CJson](CJson/README.ja.md)
-- [Cbor](Cbor/README.ja.md)
-
-- **JsonGenerator (`EspHelperJsonGenerator.h`)** – ESP-IDFコンポーネント`espressif/json_generator`を包んだラッパー。固定バッファやストリーミング出力でJSONを生成し、メモリ使用量を制御しつつテレメトリやログを出力できます。
-- **JsonParser (`EspHelperJsonParser.h`)** – ESP-IDFコンポーネント`espressif/json_parser`を薄く包み、トークンバッファ管理と型付きゲッターを提供。HTTPレスポンスや設定JSONを安全に読みたいときに使います。
-- **CJson (`EspHelperCJson.h`)** – ESP-IDFの`cJSON`実装をRAII化し、柔軟な編集や整形出力を行いたいときに便利なヘルパーです。
-- **Cbor (`EspHelperCbor.h`)** – `espressif/cbor` (TinyCBOR) をJSONライクなAPIで利用し、バイナリCBORドキュメントを生成/解析できます。
+- **JsonGenerator (`EspHelperJsonGenerator.h`)** – ESP-IDFコンポーネント`espressif/json_generator`を包んだラッパー。固定バッファやストリーミング出力でJSONを生成し、メモリ使用量を制御しつつテレメトリやログを出力できます。([Docs](JsonGenerator/README.ja.md))
+- **JsonParser (`EspHelperJsonParser.h`)** – ESP-IDFコンポーネント`espressif/json_parser`を薄く包み、トークンバッファ管理と型付きゲッターを提供。HTTPレスポンスや設定JSONを安全に読みたいときに使います。([Docs](JsonParser/README.ja.md))
+- **CJson (`EspHelperCJson.h`)** – ESP-IDFの`cJSON`実装をRAII化し、柔軟な編集や整形出力を行いたいときに便利なヘルパーです。([Docs](CJson/README.ja.md))
+- **Cbor (`EspHelperCbor.h`)** – `espressif/cbor` (TinyCBOR) をJSONライクなAPIで利用し、バイナリCBORドキュメントを生成/解析できます。([Docs](Cbor/README.ja.md))
 
 ## 使い分けのヒント
 - JSONを**生成**したい（ステータス送信、設定エクスポート、ストリーミングログなど）→ `JsonGenerator/…`配下の例へ。

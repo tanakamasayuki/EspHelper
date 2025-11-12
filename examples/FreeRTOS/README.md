@@ -4,22 +4,13 @@
 
 These sketches cover Arduino-friendly wrappers for ESP-IDF subsystems that live under FreeRTOS.
 
-## Subdirectories
-- [Task](Task/README.md)
-- [Queue](Queue/README.md)
-- [Semaphore](Semaphore/README.md)
-- [Mutex](Mutex/README.md)
-- [MessageBuffer](MessageBuffer/README.md)
-- [StreamBuffer](StreamBuffer/README.md)
-- [Ringbuf](Ringbuf/README.md)
-
-- **Task (`EspHelperTask.h`)** – Lightweight facade around `xTaskCreatePinnedToCore` that lets you start/stop lambdas as FreeRTOS tasks with automatic cleanup.
-- **Queue (`EspHelperQueue.h`)** – Template wrapper over FreeRTOS queues with `send`/`receive` helpers.
-- **Semaphore (`EspHelperSemaphore.h`)** – Binary and counting semaphores with convenient RAII handling.
-- **Mutex (`EspHelperMutex.h`)** – Minimal wrapper over `xSemaphoreCreateMutex`.
-- **MessageBuffer (`EspHelperMessageBuffer.h`)** – Wrapper for FreeRTOS message buffers that preserves per-message framing for variable-length packets.
-- **StreamBuffer (`EspHelperStreamBuffer.h`)** – Helper for FreeRTOS stream buffers when you need a byte-oriented pipe with optional ISR endpoints.
-- **Ringbuffer (`EspHelperRingbuf.h`)** – RAII wrapper over the ESP-IDF `esp_ringbuf` component that simplifies creation (dynamic or static), zero-copy send/receive patterns, and ISR-safe operations. Choose between byte-buffer and item-buffer modes based on your data layout.
+- **Task (`EspHelperTask.h`)** – Lightweight facade around `xTaskCreatePinnedToCore` that lets you start/stop lambdas as FreeRTOS tasks with automatic cleanup. ([Docs](Task/README.md))
+- **Queue (`EspHelperQueue.h`)** – Template wrapper over FreeRTOS queues with `send`/`receive` helpers. ([Docs](Queue/README.md))
+- **Semaphore (`EspHelperSemaphore.h`)** – Binary and counting semaphores with convenient RAII handling. ([Docs](Semaphore/README.md))
+- **Mutex (`EspHelperMutex.h`)** – Minimal wrapper over `xSemaphoreCreateMutex`. ([Docs](Mutex/README.md))
+- **MessageBuffer (`EspHelperMessageBuffer.h`)** – Wrapper for FreeRTOS message buffers that preserves per-message framing for variable-length packets. ([Docs](MessageBuffer/README.md))
+- **StreamBuffer (`EspHelperStreamBuffer.h`)** – Helper for FreeRTOS stream buffers when you need a byte-oriented pipe with optional ISR endpoints. ([Docs](StreamBuffer/README.md))
+- **Ringbuffer (`EspHelperRingbuf.h`)** – RAII wrapper over the ESP-IDF `esp_ringbuf` component that simplifies creation (dynamic or static), zero-copy send/receive patterns, and ISR-safe operations. Choose between byte-buffer and item-buffer modes based on your data layout. ([Docs](Ringbuf/README.md))
 
 ## Buffer helper cheat sheet
 - Reach for **StreamBuffer** when you just need a byte-oriented pipe between tasks/ISRs. Tune the `triggerLevel` to balance latency vs. wakeups.
