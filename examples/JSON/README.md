@@ -4,16 +4,10 @@
 
 This folder groups Arduino-friendly helpers that cover JSON-style workflows (even if the output isn't strict JSON):
 
-## Subdirectories
-- [JsonGenerator](JsonGenerator/README.md)
-- [JsonParser](JsonParser/README.md)
-- [CJson](CJson/README.md)
-- [Cbor](Cbor/README.md)
-
-- **JsonGenerator (`EspHelperJsonGenerator.h`)** – wrapper around the ESP-IDF `espressif/json_generator` component; build JSON documents using preallocated buffers or stream directly to any `Print` target when you need deterministic memory use.
-- **JsonParser (`EspHelperJsonParser.h`)** – consume JSON payloads with a light wrapper around the ESP-IDF `espressif/json_parser` component, complete with token-buffer management and typed getters. Use this when you parse responses from web services, BLE characteristics, or configuration blobs.
-- **CJson (`EspHelperCJson.h`)** – RAII helper around ESP-IDF's `cJSON` implementation for advanced manipulation, pretty-printing, or when you need the full cJSON feature-set without manual memory handling.
-- **Cbor (`EspHelperCbor.h`)** – Lightweight wrapper for `espressif/cbor` (TinyCBOR). CBOR isn't JSON, but the API mirrors JSON-style builders/readers so you can emit compact binary payloads while writing Arduino code that feels like JSON manipulation.
+- **JsonGenerator (`EspHelperJsonGenerator.h`)** – wrapper around the ESP-IDF `espressif/json_generator` component; build JSON documents using preallocated buffers or stream directly to any `Print` target when you need deterministic memory use. ([Docs](JsonGenerator/README.md))
+- **JsonParser (`EspHelperJsonParser.h`)** – consume JSON payloads with a light wrapper around the ESP-IDF `espressif/json_parser` component, complete with token-buffer management and typed getters. Use this when you parse responses from web services, BLE characteristics, or configuration blobs. ([Docs](JsonParser/README.md))
+- **CJson (`EspHelperCJson.h`)** – RAII helper around ESP-IDF's `cJSON` implementation for advanced manipulation, pretty-printing, or when you need the full cJSON feature-set without manual memory handling. ([Docs](CJson/README.md))
+- **Cbor (`EspHelperCbor.h`)** – Lightweight wrapper for `espressif/cbor` (TinyCBOR). CBOR isn't JSON, but the API mirrors JSON-style builders/readers so you can emit compact binary payloads while writing Arduino code that feels like JSON manipulation. ([Docs](Cbor/README.md))
 
 ## Choosing a helper
 - Need to **produce** JSON (telemetry, config export, streaming logs)? Start with the JsonGenerator examples (`JsonGenerator/…`).
