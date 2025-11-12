@@ -2,9 +2,10 @@
 
 [English README](README.md)
 
-本ディレクトリではFreeRTOS系のESP-IDF機能をArduinoから扱いやすくするヘルパーを紹介します。現時点ではリングバッファ用ラッパーを収録しています。
+本ディレクトリではFreeRTOS系のESP-IDF機能をArduinoから扱いやすくするヘルパーを紹介します。
 
 - **Ringbuffer (`EspHelperRingbuf.h`)** – ESP-IDFコンポーネント`esp_ringbuf`をRAII化し、動的／静的メモリの生成、ゼロコピー送受信、ISR対応APIをまとめて提供します。データ形態に応じてBYTEBUF・NoSplit・AllowSplitを選択可能です。
+- **Task (`EspHelperTask.h`)** – `xTaskCreatePinnedToCore` をラップし、ラムダ関数でFreeRTOSタスクを起動/停止できる軽量ヘルパー。
 
 ## 使い分けのヒント
 - タスク間で**バイトストリームや可変長パケット**を流したい → BYTEBUFモード（`Ringbuf/ByteBuffer`）。
@@ -12,3 +13,14 @@
 - ISRとタスク間でデータをやり取りしたい場合も、提供している`sendFromISR()`/`receiveFromISR()`を利用できます。
 
 今後、キュー／StreamBuffer等のラッパーも追加された場合はこのカテゴリに配置されます。
+
+## 収録サンプル
+- `Ringbuf/ByteBuffer` – BYTEBUFリングバッファへ文字列を流し、直ちに読み戻す例。
+- `Ringbuf/FixedStruct` – No-Splitかつ静的メモリで固定サイズ構造体をやり取りする例。
+- `Task/SimpleTask` – FreeRTOSタスクを起動してLEDを点滅させる最小例。
+- `Task/AdvancedParams` – スタックサイズ・優先度・コア割り当て（`tskNO_AFFINITY`/`PRO_CPU_NUM`/`APP_CPU_NUM`）の指定方法を示す例。
+
+### コア割り当てメモ
+- `tskNO_AFFINITY`: コアを固定せず、スケジューラが自動で配置します。
+- `PRO_CPU_NUM (0)`: PRO CPU（CPU0）で実行します。
+- `APP_CPU_NUM (1)`: APP CPU（CPU1）で実行します。
