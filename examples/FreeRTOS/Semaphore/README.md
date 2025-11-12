@@ -15,3 +15,5 @@
 
 ## Example Overview
 - `Binary/Binary.ino` – two tasks sharing a binary semaphore to serialize access to `Serial` output.
+- `Counting/Counting.ino` – counting semaphore limiting how many worker tasks can hold a slot simultaneously.
+- `IsrSignal/IsrSignal.ino` – binary semaphore released from a timer ISR to wake a task (shows how to call `xSemaphoreGiveFromISR` via `raw()`).

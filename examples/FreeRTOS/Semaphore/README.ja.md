@@ -15,3 +15,5 @@
 
 ## 収録スケッチ
 - `Binary/Binary.ino` – 2つのタスクでバイナリセマフォを共有し、シリアル出力をシリアライズします。
+- `Counting/Counting.ino` – カウンティングセマフォで同時実行数を制限し、空きが出るまで待つパターン。
+- `IsrSignal/IsrSignal.ino` – タイマーISRで`xSemaphoreGiveFromISR`を呼び、タスクを起床させる例。

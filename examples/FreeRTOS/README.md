@@ -29,4 +29,8 @@ These sketches cover Arduino-friendly wrappers for ESP-IDF subsystems that live 
 - `Queue/TimeoutQueue` – Demonstrates finite waits and handling timeout events.
 - `Queue/BlockingQueue` – Uses `portMAX_DELAY` on both sides to block until space/data is available.
 - `Semaphore/Binary` – Two tasks alternating access via a binary semaphore.
+- `Semaphore/Counting` – Uses a counting semaphore to cap the number of concurrent workers.
+- `Semaphore/IsrSignal` – Timer ISR gives a semaphore to wake a task safely.
 - `Mutex/SimpleMutex` – Demonstrates guarding shared state with a mutex.
+- `Mutex/TryLock` – Shows how to use `lock(0)` to attempt a non-blocking critical section.
+- `Mutex/BlockingMutex` – Both producer/consumer block with `portMAX_DELAY` to serialize access to shared data.
