@@ -13,7 +13,7 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 ## カテゴリ別リンク
 - **JSON**: [JsonGenerator](examples/JSON/JsonGenerator/README.ja.md)、[JsonParser](examples/JSON/JsonParser/README.ja.md)、[cJSON](examples/JSON/CJson/README.ja.md)
 - **FreeRTOS**: [Ringbuffer](examples/FreeRTOS/Ringbuf/README.ja.md)
-- **Utility**: [QrCode](examples/Utility/QrCode/README.ja.md)、[RgbLed](examples/Utility/RgbLed/README.ja.md)
+- **Utility**: [QrCode](examples/Utility/QrCode/README.ja.md)、[RgbLed](examples/Utility/RgbLed/README.ja.md)、[HttpServer](examples/Utility/HttpServer/README.ja.md)
 - 各READMEにAPIリファレンスとサンプルコードがまとまっているので、必要なセクションへ直接アクセスしてください。
 
 ## 提供機能
@@ -22,6 +22,7 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 - `EspHelperCJson.h`: ESP-IDFの`cJSON`をRAII化し、柔軟な編集や整形出力、再パースを安全に行えるようにするラッパー。
 - `EspHelperQrCode.h`: `espressif/qrcode`で生成したQRコードをキャプチャし、ASCII表示や任意ディスプレイ描画に利用しやすくするラッパー。
 - `EspHelperRingbuf.h`: FreeRTOSの`ringbuf`に対して所有権管理・RAII受信アイテム・ISR対応ヘルパーを提供。
+- `EspHelperHttpServer.h`: `esp_http_server`をArduinoライクに扱うためのシンプルなHTTPサーバーラッパー。
 - `EspHelperRgbStrip.h`: `rgbLedWrite()`を用いて複数のRGB LEDを順次駆動するための簡易ストリップAPI。
 
 ## 必要環境
