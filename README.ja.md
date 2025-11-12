@@ -13,7 +13,7 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 ## カテゴリ別リンク
 - **JSON**: [JsonGenerator](examples/JSON/JsonGenerator/README.ja.md)、[JsonParser](examples/JSON/JsonParser/README.ja.md)、[cJSON](examples/JSON/CJson/README.ja.md)
 - **FreeRTOS**: [Task](examples/FreeRTOS/Task/README.ja.md)、[Queue](examples/FreeRTOS/Queue/README.ja.md)、[Semaphore](examples/FreeRTOS/Semaphore/README.ja.md)、[Mutex](examples/FreeRTOS/Mutex/README.ja.md)、[MessageBuffer](examples/FreeRTOS/MessageBuffer/README.ja.md)、[StreamBuffer](examples/FreeRTOS/StreamBuffer/README.ja.md)、[Ringbuffer](examples/FreeRTOS/Ringbuf/README.ja.md)
-- **Utility**: [QrCode](examples/Utility/QrCode/README.ja.md)、[RgbLed](examples/Utility/RgbLed/README.ja.md)、[HttpServer](examples/Utility/HttpServer/README.ja.md)
+- **Utility**: [QrCode](examples/Utility/QrCode/README.ja.md)、[Dsp](examples/Utility/Dsp/README.ja.md)、[RgbLed](examples/Utility/RgbLed/README.ja.md)、[HttpServer](examples/Utility/HttpServer/README.ja.md)
 - 各READMEにAPIリファレンスとサンプルコードがまとまっているので、必要なセクションへ直接アクセスしてください。
 
 ## 提供機能
@@ -21,6 +21,9 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 - `EspHelperJsonParser.h`: `espressif/json_parser`を薄く包み、トークンバッファ管理と型付きゲッターを提供。
 - `EspHelperCJson.h`: ESP-IDFの`cJSON`をRAII化し、柔軟な編集や整形出力、再パースを安全に行えるようにするラッパー。
 - `EspHelperQrCode.h`: `espressif/qrcode`で生成したQRコードをキャプチャし、ASCII表示や任意ディスプレイ描画に利用しやすくするラッパー。
+- `EspHelperDsp.h`: `esp_dsp`のFFTやFIR APIをArduino向けにまとめたラッパー。Hannウィンドウ適用や遅延線管理も面倒を見ます。
+- `EspHelperHttpServer.h`: `esp_http_server`をArduinoライクに扱うためのシンプルなHTTPサーバーラッパー。
+- `EspHelperRgbStrip.h`: `rgbLedWrite()`を用いて複数のRGB LEDを順次駆動するための簡易ストリップAPI。
 - `EspHelperTask.h`: FreeRTOSタスクをラムダで生成・停止できる軽量なRAIIラッパー。
 - `EspHelperQueue.h`: FreeRTOSキューをテンプレートで扱い、`send` / `receive` を安全に呼び出せるヘルパー。
 - `EspHelperSemaphore.h`: バイナリ/カウンティングセマフォをRAIIで扱えるラッパー。
@@ -28,8 +31,6 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 - `EspHelperMessageBuffer.h`: FreeRTOSメッセージバッファを包み、メッセージ境界を保ったまま送受信できるヘルパー。
 - `EspHelperStreamBuffer.h`: FreeRTOSストリームバッファを簡潔に扱い、トリガーレベル設定や静的確保をサポートするラッパー。
 - `EspHelperRingbuf.h`: FreeRTOSの`ringbuf`に対して所有権管理・RAII受信アイテム・ISR対応ヘルパーを提供。
-- `EspHelperHttpServer.h`: `esp_http_server`をArduinoライクに扱うためのシンプルなHTTPサーバーラッパー。
-- `EspHelperRgbStrip.h`: `rgbLedWrite()`を用いて複数のRGB LEDを順次駆動するための簡易ストリップAPI。
 
 ## 必要環境
 - Arduino-ESP32 v2.0.0以降、またはPlatformIOの`framework = arduino`環境。
