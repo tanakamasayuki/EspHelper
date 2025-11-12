@@ -12,7 +12,7 @@ EspHelper is a collection of single-header Arduino helpers that expose ESP-IDF c
 
 ## Example Categories
 - **JSON**: [JsonGenerator](examples/JSON/JsonGenerator/README.md), [JsonParser](examples/JSON/JsonParser/README.md), [cJSON](examples/JSON/CJson/README.md)
-- **FreeRTOS**: [Ringbuffer](examples/FreeRTOS/Ringbuf/README.md), [Task](examples/FreeRTOS/Task/README.md)
+- **FreeRTOS**: [Ringbuffer](examples/FreeRTOS/Ringbuf/README.md), [Task](examples/FreeRTOS/Task/README.md), [Queue](examples/FreeRTOS/Queue/README.md), [Semaphore](examples/FreeRTOS/Semaphore/README.md), [Mutex](examples/FreeRTOS/Mutex/README.md)
 - **Utility**: [QrCode](examples/Utility/QrCode/README.md), [RgbLed](examples/Utility/RgbLed/README.md), [HttpServer](examples/Utility/HttpServer/README.md)
 
 ## Modules

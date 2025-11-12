@@ -27,7 +27,7 @@ void loop()
   packet.humidity = 40.0f + (millis() % 500) / 1000.0f;
   ringbuf.send(&packet, sizeof(packet));
 
-  auto item = ringbuf.receive(pdMS_TO_TICKS(10));
+  auto item = ringbuf.receive(10);
   if (item.valid() && item.size() == sizeof(SensorPacket))
   {
     auto *rx = reinterpret_cast<const SensorPacket *>(item.data());
