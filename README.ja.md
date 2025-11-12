@@ -13,7 +13,8 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 ## カテゴリ別リンク
 - **JSON**: [JsonGenerator](examples/JSON/JsonGenerator/README.ja.md)、[JsonParser](examples/JSON/JsonParser/README.ja.md)、[cJSON](examples/JSON/CJson/README.ja.md)、[CBOR](examples/JSON/Cbor/README.ja.md)
 - **FreeRTOS**: [Task](examples/FreeRTOS/Task/README.ja.md)、[Queue](examples/FreeRTOS/Queue/README.ja.md)、[Semaphore](examples/FreeRTOS/Semaphore/README.ja.md)、[Mutex](examples/FreeRTOS/Mutex/README.ja.md)、[MessageBuffer](examples/FreeRTOS/MessageBuffer/README.ja.md)、[StreamBuffer](examples/FreeRTOS/StreamBuffer/README.ja.md)、[Ringbuffer](examples/FreeRTOS/Ringbuf/README.ja.md)
-- **Utility**: [QrCode](examples/Utility/QrCode/README.ja.md)、[Dsp](examples/Utility/Dsp/README.ja.md)、[Event](examples/Utility/Event/README.ja.md)、[Sodium](examples/Utility/Sodium/README.ja.md)、[Lcd](examples/Utility/Lcd/README.ja.md)、[RgbLed](examples/Utility/RgbLed/README.ja.md)
+- **Utility**: [QrCode](examples/Utility/QrCode/README.ja.md)、[Dsp](examples/Utility/Dsp/README.ja.md)、[Event](examples/Utility/Event/README.ja.md)、[Sodium](examples/Utility/Sodium/README.ja.md)
+- **Display**: [Lcd](examples/Display/Lcd/README.ja.md)、[RgbStrip](examples/Display/RgbStrip/README.ja.md)
 - **Network**: [Mqtt](examples/Network/Mqtt/README.ja.md)、[HttpServer](examples/Network/HttpServer/README.ja.md)
 - 各READMEにAPIリファレンスとサンプルコードがまとまっているので、必要なセクションへ直接アクセスしてください。
 

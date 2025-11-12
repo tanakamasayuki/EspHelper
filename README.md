@@ -13,7 +13,8 @@ EspHelper is a collection of single-header Arduino helpers that expose ESP-IDF c
 ## Example Categories
 - **JSON**: [JsonGenerator](examples/JSON/JsonGenerator/README.md), [JsonParser](examples/JSON/JsonParser/README.md), [cJSON](examples/JSON/CJson/README.md), [CBOR](examples/JSON/Cbor/README.md)
 - **FreeRTOS**: [Task](examples/FreeRTOS/Task/README.md), [Queue](examples/FreeRTOS/Queue/README.md), [Semaphore](examples/FreeRTOS/Semaphore/README.md), [Mutex](examples/FreeRTOS/Mutex/README.md), [MessageBuffer](examples/FreeRTOS/MessageBuffer/README.md), [StreamBuffer](examples/FreeRTOS/StreamBuffer/README.md), [Ringbuffer](examples/FreeRTOS/Ringbuf/README.md)
-- **Utility**: [QrCode](examples/Utility/QrCode/README.md), [Dsp](examples/Utility/Dsp/README.md), [Event](examples/Utility/Event/README.md), [Sodium](examples/Utility/Sodium/README.md), [Lcd](examples/Utility/Lcd/README.md), [RgbLed](examples/Utility/RgbLed/README.md)
+- **Utility**: [QrCode](examples/Utility/QrCode/README.md), [Dsp](examples/Utility/Dsp/README.md), [Event](examples/Utility/Event/README.md), [Sodium](examples/Utility/Sodium/README.md)
+- **Display**: [Lcd](examples/Display/Lcd/README.md), [RgbStrip](examples/Display/RgbStrip/README.md)
 - **Network**: [Mqtt](examples/Network/Mqtt/README.md), [HttpServer](examples/Network/HttpServer/README.md)
 
 ## Modules

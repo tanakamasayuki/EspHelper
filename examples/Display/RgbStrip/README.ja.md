@@ -1,4 +1,4 @@
-# RgbLed サンプル
+# RgbStrip サンプル
 
 [English README](README.md)
 

@@ -1,4 +1,4 @@
-# RgbLed Examples
+# RgbStrip Examples
 
 [日本語はこちら](README.ja.md)
 
