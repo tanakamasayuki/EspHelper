@@ -17,24 +17,24 @@
 ### Named Colors (`EspHelper::RgbColor`)
 | Name | Constant | Hex | Swatch | Description |
 |------|----------|-----|--------|-------------|
-| Black | `EspHelper::RgbColor::Black` | `0x000000` | <span style="display:inline-block;width:32px;height:12px;background:#000000;border:1px solid #ddd;"></span> | Off |
-| White | `EspHelper::RgbColor::White` | `0xFFFFFF` | <span style="display:inline-block;width:32px;height:12px;background:#FFFFFF;border:1px solid #ddd;"></span> | Full white |
-| Red | `EspHelper::RgbColor::Red` | `0xFF0000` | <span style="display:inline-block;width:32px;height:12px;background:#FF0000;border:1px solid #ddd;"></span> | Pure red |
-| Green | `EspHelper::RgbColor::Green` | `0x00FF00` | <span style="display:inline-block;width:32px;height:12px;background:#00FF00;border:1px solid #ddd;"></span> | Pure green |
-| Blue | `EspHelper::RgbColor::Blue` | `0x0000FF` | <span style="display:inline-block;width:32px;height:12px;background:#0000FF;border:1px solid #ddd;"></span> | Pure blue |
-| Cyan | `EspHelper::RgbColor::Cyan` | `0x00FFFF` | <span style="display:inline-block;width:32px;height:12px;background:#00FFFF;border:1px solid #ddd;"></span> | Cyan |
-| Magenta | `EspHelper::RgbColor::Magenta` | `0xFF00FF` | <span style="display:inline-block;width:32px;height:12px;background:#FF00FF;border:1px solid #ddd;"></span> | Magenta |
-| Yellow | `EspHelper::RgbColor::Yellow` | `0xFFFF00` | <span style="display:inline-block;width:32px;height:12px;background:#FFFF00;border:1px solid #ddd;"></span> | Yellow |
-| Orange | `EspHelper::RgbColor::Orange` | `0xFF7F00` | <span style="display:inline-block;width:32px;height:12px;background:#FF7F00;border:1px solid #ddd;"></span> | Orange |
-| Purple | `EspHelper::RgbColor::Purple` | `0x8000FF` | <span style="display:inline-block;width:32px;height:12px;background:#8000FF;border:1px solid #ddd;"></span> | Purple |
-| Pink | `EspHelper::RgbColor::Pink` | `0xFF1493` | <span style="display:inline-block;width:32px;height:12px;background:#FF1493;border:1px solid #ddd;"></span> | Pink |
-| Lime | `EspHelper::RgbColor::Lime` | `0x32CD32` | <span style="display:inline-block;width:32px;height:12px;background:#32CD32;border:1px solid #ddd;"></span> | Lime |
-| Teal | `EspHelper::RgbColor::Teal` | `0x008080` | <span style="display:inline-block;width:32px;height:12px;background:#008080;border:1px solid #ddd;"></span> | Teal |
-| Navy | `EspHelper::RgbColor::Navy` | `0x000080` | <span style="display:inline-block;width:32px;height:12px;background:#000080;border:1px solid #ddd;"></span> | Navy |
-| Maroon | `EspHelper::RgbColor::Maroon` | `0x800000` | <span style="display:inline-block;width:32px;height:12px;background:#800000;border:1px solid #ddd;"></span> | Maroon |
-| Olive | `EspHelper::RgbColor::Olive` | `0x808000` | <span style="display:inline-block;width:32px;height:12px;background:#808000;border:1px solid #ddd;"></span> | Olive |
-| Gold | `EspHelper::RgbColor::Gold` | `0xFFD700` | <span style="display:inline-block;width:32px;height:12px;background:#FFD700;border:1px solid #ddd;"></span> | Gold |
-| Silver | `EspHelper::RgbColor::Silver` | `0xC0C0C0` | <span style="display:inline-block;width:32px;height:12px;background:#C0C0C0;border:1px solid #ddd;"></span> | Silver |
+| Black | `EspHelper::RgbColor::Black` | `0x000000` | ![Black](assets/black.png) | Off |
+| White | `EspHelper::RgbColor::White` | `0xFFFFFF` | ![White](assets/white.png) | Full white |
+| Red | `EspHelper::RgbColor::Red` | `0xFF0000` | ![Red](assets/red.png) | Pure red |
+| Green | `EspHelper::RgbColor::Green` | `0x00FF00` | ![Green](assets/green.png) | Pure green |
+| Blue | `EspHelper::RgbColor::Blue` | `0x0000FF` | ![Blue](assets/blue.png) | Pure blue |
+| Cyan | `EspHelper::RgbColor::Cyan` | `0x00FFFF` | ![Cyan](assets/cyan.png) | Cyan |
+| Magenta | `EspHelper::RgbColor::Magenta` | `0xFF00FF` | ![Magenta](assets/magenta.png) | Magenta |
+| Yellow | `EspHelper::RgbColor::Yellow` | `0xFFFF00` | ![Yellow](assets/yellow.png) | Yellow |
+| Orange | `EspHelper::RgbColor::Orange` | `0xFF7F00` | ![Orange](assets/orange.png) | Orange |
+| Purple | `EspHelper::RgbColor::Purple` | `0x8000FF` | ![Purple](assets/purple.png) | Purple |
+| Pink | `EspHelper::RgbColor::Pink` | `0xFF1493` | ![Pink](assets/pink.png) | Pink |
+| Lime | `EspHelper::RgbColor::Lime` | `0x32CD32` | ![Lime](assets/lime.png) | Lime |
+| Teal | `EspHelper::RgbColor::Teal` | `0x008080` | ![Teal](assets/teal.png) | Teal |
+| Navy | `EspHelper::RgbColor::Navy` | `0x000080` | ![Navy](assets/navy.png) | Navy |
+| Maroon | `EspHelper::RgbColor::Maroon` | `0x800000` | ![Maroon](assets/maroon.png) | Maroon |
+| Olive | `EspHelper::RgbColor::Olive` | `0x808000` | ![Olive](assets/olive.png) | Olive |
+| Gold | `EspHelper::RgbColor::Gold` | `0xFFD700` | ![Gold](assets/gold.png) | Gold |
+| Silver | `EspHelper::RgbColor::Silver` | `0xC0C0C0` | ![Silver](assets/silver.png) | Silver |
 
 ## Examples
 - `SimpleStrip/SimpleStrip.ino` – single RGB LED cycling through red/green/blue on pin 2.
