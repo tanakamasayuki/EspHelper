@@ -14,6 +14,7 @@ EspHelper is a collection of single-header Arduino helpers that expose ESP-IDF c
 - `EspHelperJsonGenerator.h`: Arduino-style facade over `espressif/json_generator`, including static buffers, streaming, and reset patterns.
 - `EspHelperJsonParser.h`: Thin wrapper for `espressif/json_parser` that manages token buffers and exposes typed getters & navigation helpers.
 - `EspHelperCJson.h`: RAII convenience layer for ESP-IDF's `cJSON`, enabling complex manipulations, parsing, and pretty-printing without manual memory handling.
+- `EspHelperQrCode.h`: Captures QR bitmaps generated via `espressif/qrcode` so you can render them as ASCII or paint them onto any display.
 - `EspHelperRingbuf.h`: RAII helpers for FreeRTOS `ringbuf`, covering dynamic/static creation, ISR-safe send/receive, and auto-returned items.
 
 ## Requirements
@@ -33,6 +34,8 @@ EspHelper is a collection of single-header Arduino helpers that expose ESP-IDF c
 - `examples/JSON/CJson/BuildAndParse` – uses the cJSON wrapper to build, pretty-print, and parse documents with advanced manipulation.
 - `examples/FreeRTOS/Ringbuf/ByteBuffer` – uses `EspHelper::Ringbuffer` to push formatted strings into a BYTEBUF ring buffer and read them back immediately.
 - `examples/FreeRTOS/Ringbuf/FixedStruct` – statically allocates a no-split ring buffer for fixed-size structs, ideal for sensor pipelines or task-to-task messaging.
+- `examples/Utility/QrCode/AsciiConsole` – generates a QR code and prints it as ASCII art over `Serial`.
+- `examples/Utility/QrCode/M5Display` – draws a Wi-Fi provisioning QR code on an M5 device using M5Unified.
 - More sketches can be added as additional helpers land; each example focuses on a single concern so you can copy only what you need.
 
 ## Roadmap

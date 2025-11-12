@@ -14,6 +14,7 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 - `EspHelperJsonGenerator.h`: `espressif/json_generator`をArduino流のAPIで利用するためのラッパー。固定バッファ、ストリーミング、リセットパターンをカバー。
 - `EspHelperJsonParser.h`: `espressif/json_parser`を薄く包み、トークンバッファ管理と型付きゲッターを提供。
 - `EspHelperCJson.h`: ESP-IDFの`cJSON`をRAII化し、柔軟な編集や整形出力、再パースを安全に行えるようにするラッパー。
+- `EspHelperQrCode.h`: `espressif/qrcode`で生成したQRコードをキャプチャし、ASCII表示や任意ディスプレイ描画に利用しやすくするラッパー。
 - `EspHelperRingbuf.h`: FreeRTOSの`ringbuf`に対して所有権管理・RAII受信アイテム・ISR対応ヘルパーを提供。
 
 ## 必要環境
@@ -33,6 +34,8 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 - `examples/JSON/CJson/BuildAndParse` : cJSONラッパーでJSONを構築・整形・再パースする例。
 - `examples/FreeRTOS/Ringbuf/ByteBuffer` : `EspHelper::Ringbuffer`でBYTEBUFを生成し、文字列データをプッシュ＆読み戻しする例。
 - `examples/FreeRTOS/Ringbuf/FixedStruct` : 静的メモリ＋No-Splitリングバッファに固定サイズ構造体を流す例で、センサーデータの受け渡しなどに応用可能。
+- `examples/Utility/QrCode/AsciiConsole` : 生成したQRコードをASCIIアートとして`Serial`に表示する例。
+- `examples/Utility/QrCode/M5Display` : M5UnifiedデバイスへWi-Fi設定QRコードを描画する例。
 - それぞれ最小限のコードで構成されているため、必要な部分だけを既存スケッチにコピーできます。
 
 ## ライセンス
