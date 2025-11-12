@@ -25,12 +25,12 @@ EspHelper is a collection of single-header Arduino helpers that expose ESP-IDF c
 2. Include the header you need from `src/` in your sketch. The ESP-IDF components leveraged by EspHelper are already part of recent Arduino ESP32 cores, so no additional setup is necessary.
 
 ## Examples
-- `examples/JsonGenerator/AllFunctions` – exercises every `JsonGenerator` method (including reset variations and streaming) in one sketch.
-- `examples/JsonGenerator/StaticJsonBuffer` – builds a JSON document into a fixed stack buffer and prints it to `Serial`.
-- `examples/JsonGenerator/StreamingToSerial` – streams JSON tokens directly to `Serial` via the `Print`-based constructor for minimal RAM usage.
-- `examples/JsonParser/BasicParse` – tokenizes and queries nested JSON using `JsonParser`, including arrays, nested objects, and typed getters.
-- `examples/Ringbuf/ByteBuffer` – uses `EspHelper::Ringbuffer` to push formatted strings into a BYTEBUF ring buffer and read them back immediately.
-- `examples/Ringbuf/FixedStruct` – statically allocates a no-split ring buffer for fixed-size structs, ideal for sensor pipelines or task-to-task messaging.
+- `examples/JSON/JsonGenerator/AllFunctions` – exercises every `JsonGenerator` method (including reset variations and streaming) in one sketch.
+- `examples/JSON/JsonGenerator/StaticJsonBuffer` – builds a JSON document into a fixed stack buffer and prints it to `Serial`.
+- `examples/JSON/JsonGenerator/StreamingToSerial` – streams JSON tokens directly to `Serial` via the `Print`-based constructor for minimal RAM usage.
+- `examples/JSON/JsonParser/BasicParse` – tokenizes and queries nested JSON using `JsonParser`, including arrays, nested objects, and typed getters.
+- `examples/FreeRTOS/Ringbuf/ByteBuffer` – uses `EspHelper::Ringbuffer` to push formatted strings into a BYTEBUF ring buffer and read them back immediately.
+- `examples/FreeRTOS/Ringbuf/FixedStruct` – statically allocates a no-split ring buffer for fixed-size structs, ideal for sensor pipelines or task-to-task messaging.
 - More sketches can be added as additional helpers land; each example focuses on a single concern so you can copy only what you need.
 
 ## Roadmap

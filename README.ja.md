@@ -25,12 +25,12 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 2. スケッチで`src/`配下のヘッダーをインクルードします。利用するESP-IDFコンポーネントはArduinoコア側に既に同梱されているため、追加導入は不要です。
 
 ## サンプルスケッチ
-- `examples/JsonGenerator/AllFunctions` : `JsonGenerator`の全メソッド（reset系やストリーミング含む）をまとめて試せる例。
-- `examples/JsonGenerator/StaticJsonBuffer` : 固定長バッファを使ってJSONを生成し、`Serial`へ出力する基本例。
-- `examples/JsonGenerator/StreamingToSerial` : `Print`ベースのコンストラクタでトークンを逐次`Serial`に流すストリーミング例。
-- `examples/JsonParser/BasicParse` : `JsonParser`でネストしたJSONを解析し、配列やオブジェクトから型付きで値を取得する例。
-- `examples/Ringbuf/ByteBuffer` : `EspHelper::Ringbuffer`でBYTEBUFを生成し、文字列データをプッシュ＆読み戻しする例。
-- `examples/Ringbuf/FixedStruct` : 静的メモリ＋No-Splitリングバッファに固定サイズ構造体を流す例で、センサーデータの受け渡しなどに応用可能。
+- `examples/JSON/JsonGenerator/AllFunctions` : `JsonGenerator`の全メソッド（reset系やストリーミング含む）をまとめて試せる例。
+- `examples/JSON/JsonGenerator/StaticJsonBuffer` : 固定長バッファを使ってJSONを生成し、`Serial`へ出力する基本例。
+- `examples/JSON/JsonGenerator/StreamingToSerial` : `Print`ベースのコンストラクタでトークンを逐次`Serial`に流すストリーミング例。
+- `examples/JSON/JsonParser/BasicParse` : `JsonParser`でネストしたJSONを解析し、配列やオブジェクトから型付きで値を取得する例。
+- `examples/FreeRTOS/Ringbuf/ByteBuffer` : `EspHelper::Ringbuffer`でBYTEBUFを生成し、文字列データをプッシュ＆読み戻しする例。
+- `examples/FreeRTOS/Ringbuf/FixedStruct` : 静的メモリ＋No-Splitリングバッファに固定サイズ構造体を流す例で、センサーデータの受け渡しなどに応用可能。
 - それぞれ最小限のコードで構成されているため、必要な部分だけを既存スケッチにコピーできます。
 
 ## ライセンス
