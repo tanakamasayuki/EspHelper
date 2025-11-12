@@ -12,7 +12,7 @@ EspHelper is a collection of single-header Arduino helpers that expose ESP-IDF c
 
 ## Example Categories
 - **JSON**: [JsonGenerator](examples/JSON/JsonGenerator/README.md), [JsonParser](examples/JSON/JsonParser/README.md), [cJSON](examples/JSON/CJson/README.md)
-- **FreeRTOS**: [Ringbuffer](examples/FreeRTOS/Ringbuf/README.md), [Task](examples/FreeRTOS/Task/README.md), [Queue](examples/FreeRTOS/Queue/README.md), [Semaphore](examples/FreeRTOS/Semaphore/README.md), [Mutex](examples/FreeRTOS/Mutex/README.md)
+- **FreeRTOS**: [Ringbuffer](examples/FreeRTOS/Ringbuf/README.md), [Task](examples/FreeRTOS/Task/README.md), [StreamBuffer](examples/FreeRTOS/StreamBuffer/README.md), [MessageBuffer](examples/FreeRTOS/MessageBuffer/README.md), [Queue](examples/FreeRTOS/Queue/README.md), [Semaphore](examples/FreeRTOS/Semaphore/README.md), [Mutex](examples/FreeRTOS/Mutex/README.md)
 - **Utility**: [QrCode](examples/Utility/QrCode/README.md), [RgbLed](examples/Utility/RgbLed/README.md), [HttpServer](examples/Utility/HttpServer/README.md)
 
 ## Modules
@@ -21,6 +21,8 @@ EspHelper is a collection of single-header Arduino helpers that expose ESP-IDF c
 - `EspHelperCJson.h`: RAII convenience layer for ESP-IDF's `cJSON`, enabling complex manipulations, parsing, and pretty-printing without manual memory handling.
 - `EspHelperQrCode.h`: Captures QR bitmaps generated via `espressif/qrcode` so you can render them as ASCII or paint them onto any display.
 - `EspHelperRingbuf.h`: RAII helpers for FreeRTOS `ringbuf`, covering dynamic/static creation, ISR-safe send/receive, and auto-returned items.
+- `EspHelperStreamBuffer.h`: Arduino wrapper for FreeRTOS stream buffers, ideal for byte pipes between tasks or ISRs (with optional trigger levels and static allocation).
+- `EspHelperMessageBuffer.h`: Convenience layer over FreeRTOS message buffers that preserves per-message framing and exposes peek/space helpers.
 - `EspHelperHttpServer.h`: Lightweight wrapper around `esp_http_server` with WebServer-like route registration helpers.
 - `EspHelperTask.h`: RAII convenience wrapper for FreeRTOS tasks (start/stop with C++ lambdas).
 - `EspHelperRgbStrip.h`: Blocking convenience class that fans out `rgbLedWrite()` calls across discrete RGB LEDs using an Adafruit_NeoPixel-like API.

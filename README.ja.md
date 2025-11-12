@@ -12,7 +12,7 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 
 ## カテゴリ別リンク
 - **JSON**: [JsonGenerator](examples/JSON/JsonGenerator/README.ja.md)、[JsonParser](examples/JSON/JsonParser/README.ja.md)、[cJSON](examples/JSON/CJson/README.ja.md)
-- **FreeRTOS**: [Ringbuffer](examples/FreeRTOS/Ringbuf/README.ja.md)、[Task](examples/FreeRTOS/Task/README.ja.md)、[Queue](examples/FreeRTOS/Queue/README.ja.md)、[Semaphore](examples/FreeRTOS/Semaphore/README.ja.md)、[Mutex](examples/FreeRTOS/Mutex/README.ja.md)
+- **FreeRTOS**: [Ringbuffer](examples/FreeRTOS/Ringbuf/README.ja.md)、[Task](examples/FreeRTOS/Task/README.ja.md)、[StreamBuffer](examples/FreeRTOS/StreamBuffer/README.ja.md)、[MessageBuffer](examples/FreeRTOS/MessageBuffer/README.ja.md)、[Queue](examples/FreeRTOS/Queue/README.ja.md)、[Semaphore](examples/FreeRTOS/Semaphore/README.ja.md)、[Mutex](examples/FreeRTOS/Mutex/README.ja.md)
 - **Utility**: [QrCode](examples/Utility/QrCode/README.ja.md)、[RgbLed](examples/Utility/RgbLed/README.ja.md)、[HttpServer](examples/Utility/HttpServer/README.ja.md)
 - 各READMEにAPIリファレンスとサンプルコードがまとまっているので、必要なセクションへ直接アクセスしてください。
 
@@ -22,6 +22,8 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 - `EspHelperCJson.h`: ESP-IDFの`cJSON`をRAII化し、柔軟な編集や整形出力、再パースを安全に行えるようにするラッパー。
 - `EspHelperQrCode.h`: `espressif/qrcode`で生成したQRコードをキャプチャし、ASCII表示や任意ディスプレイ描画に利用しやすくするラッパー。
 - `EspHelperRingbuf.h`: FreeRTOSの`ringbuf`に対して所有権管理・RAII受信アイテム・ISR対応ヘルパーを提供。
+- `EspHelperStreamBuffer.h`: FreeRTOSストリームバッファを簡潔に扱い、トリガーレベル設定や静的確保をサポートするラッパー。
+- `EspHelperMessageBuffer.h`: FreeRTOSメッセージバッファを包み、メッセージ境界を保ったまま送受信できるヘルパー。
 - `EspHelperHttpServer.h`: `esp_http_server`をArduinoライクに扱うためのシンプルなHTTPサーバーラッパー。
 - `EspHelperTask.h`: FreeRTOSタスクをラムダで生成・停止できる軽量なRAIIラッパー。
 - `EspHelperRgbStrip.h`: `rgbLedWrite()`を用いて複数のRGB LEDを順次駆動するための簡易ストリップAPI。
