@@ -13,6 +13,7 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 ## 提供機能
 - `EspHelperJsonGenerator.h`: `espressif/json_generator`をArduino流のAPIで利用するためのラッパー。固定バッファ、ストリーミング、リセットパターンをカバー。
 - `EspHelperJsonParser.h`: `espressif/json_parser`を薄く包み、トークンバッファ管理と型付きゲッターを提供。
+- `EspHelperCJson.h`: ESP-IDFの`cJSON`をRAII化し、柔軟な編集や整形出力、再パースを安全に行えるようにするラッパー。
 - `EspHelperRingbuf.h`: FreeRTOSの`ringbuf`に対して所有権管理・RAII受信アイテム・ISR対応ヘルパーを提供。
 
 ## 必要環境
@@ -29,6 +30,7 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 - `examples/JSON/JsonGenerator/StaticJsonBuffer` : 固定長バッファを使ってJSONを生成し、`Serial`へ出力する基本例。
 - `examples/JSON/JsonGenerator/StreamingToSerial` : `Print`ベースのコンストラクタでトークンを逐次`Serial`に流すストリーミング例。
 - `examples/JSON/JsonParser/BasicParse` : `JsonParser`でネストしたJSONを解析し、配列やオブジェクトから型付きで値を取得する例。
+- `examples/JSON/CJson/BuildAndParse` : cJSONラッパーでJSONを構築・整形・再パースする例。
 - `examples/FreeRTOS/Ringbuf/ByteBuffer` : `EspHelper::Ringbuffer`でBYTEBUFを生成し、文字列データをプッシュ＆読み戻しする例。
 - `examples/FreeRTOS/Ringbuf/FixedStruct` : 静的メモリ＋No-Splitリングバッファに固定サイズ構造体を流す例で、センサーデータの受け渡しなどに応用可能。
 - それぞれ最小限のコードで構成されているため、必要な部分だけを既存スケッチにコピーできます。

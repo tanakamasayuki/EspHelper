@@ -13,6 +13,7 @@ EspHelper is a collection of single-header Arduino helpers that expose ESP-IDF c
 ## Modules
 - `EspHelperJsonGenerator.h`: Arduino-style facade over `espressif/json_generator`, including static buffers, streaming, and reset patterns.
 - `EspHelperJsonParser.h`: Thin wrapper for `espressif/json_parser` that manages token buffers and exposes typed getters & navigation helpers.
+- `EspHelperCJson.h`: RAII convenience layer for ESP-IDF's `cJSON`, enabling complex manipulations, parsing, and pretty-printing without manual memory handling.
 - `EspHelperRingbuf.h`: RAII helpers for FreeRTOS `ringbuf`, covering dynamic/static creation, ISR-safe send/receive, and auto-returned items.
 
 ## Requirements
@@ -29,6 +30,7 @@ EspHelper is a collection of single-header Arduino helpers that expose ESP-IDF c
 - `examples/JSON/JsonGenerator/StaticJsonBuffer` – builds a JSON document into a fixed stack buffer and prints it to `Serial`.
 - `examples/JSON/JsonGenerator/StreamingToSerial` – streams JSON tokens directly to `Serial` via the `Print`-based constructor for minimal RAM usage.
 - `examples/JSON/JsonParser/BasicParse` – tokenizes and queries nested JSON using `JsonParser`, including arrays, nested objects, and typed getters.
+- `examples/JSON/CJson/BuildAndParse` – uses the cJSON wrapper to build, pretty-print, and parse documents with advanced manipulation.
 - `examples/FreeRTOS/Ringbuf/ByteBuffer` – uses `EspHelper::Ringbuffer` to push formatted strings into a BYTEBUF ring buffer and read them back immediately.
 - `examples/FreeRTOS/Ringbuf/FixedStruct` – statically allocates a no-split ring buffer for fixed-size structs, ideal for sensor pipelines or task-to-task messaging.
 - More sketches can be added as additional helpers land; each example focuses on a single concern so you can copy only what you need.
