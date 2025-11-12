@@ -4,6 +4,12 @@
 
 This folder groups Arduino-friendly helpers that cover JSON-style workflows (even if the output isn't strict JSON):
 
+## Subdirectories
+- [JsonGenerator](JsonGenerator/README.md)
+- [JsonParser](JsonParser/README.md)
+- [CJson](CJson/README.md)
+- [Cbor](Cbor/README.md)
+
 - **JsonGenerator (`EspHelperJsonGenerator.h`)** – wrapper around the ESP-IDF `espressif/json_generator` component; build JSON documents using preallocated buffers or stream directly to any `Print` target when you need deterministic memory use.
 - **JsonParser (`EspHelperJsonParser.h`)** – consume JSON payloads with a light wrapper around the ESP-IDF `espressif/json_parser` component, complete with token-buffer management and typed getters. Use this when you parse responses from web services, BLE characteristics, or configuration blobs.
 - **CJson (`EspHelperCJson.h`)** – RAII helper around ESP-IDF's `cJSON` implementation for advanced manipulation, pretty-printing, or when you need the full cJSON feature-set without manual memory handling.

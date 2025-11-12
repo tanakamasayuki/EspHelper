@@ -4,6 +4,15 @@
 
 本ディレクトリではFreeRTOS系のESP-IDF機能をArduinoから扱いやすくするヘルパーを紹介します。
 
+## サブディレクトリ
+- [Task](Task/README.ja.md)
+- [Queue](Queue/README.ja.md)
+- [Semaphore](Semaphore/README.ja.md)
+- [Mutex](Mutex/README.ja.md)
+- [MessageBuffer](MessageBuffer/README.ja.md)
+- [StreamBuffer](StreamBuffer/README.ja.md)
+- [Ringbuf](Ringbuf/README.ja.md)
+
 - **Task (`EspHelperTask.h`)** – `xTaskCreatePinnedToCore` をラップし、ラムダ関数でFreeRTOSタスクを起動/停止できる軽量ヘルパー。
 - **Queue (`EspHelperQueue.h`)** – FreeRTOSキューをテンプレートで扱えるラッパー。
 - **Semaphore (`EspHelperSemaphore.h`)** – バイナリ/カウンティングセマフォをRAIIで扱えるラッパー。

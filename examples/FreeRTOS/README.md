@@ -4,6 +4,15 @@
 
 These sketches cover Arduino-friendly wrappers for ESP-IDF subsystems that live under FreeRTOS.
 
+## Subdirectories
+- [Task](Task/README.md)
+- [Queue](Queue/README.md)
+- [Semaphore](Semaphore/README.md)
+- [Mutex](Mutex/README.md)
+- [MessageBuffer](MessageBuffer/README.md)
+- [StreamBuffer](StreamBuffer/README.md)
+- [Ringbuf](Ringbuf/README.md)
+
 - **Task (`EspHelperTask.h`)** – Lightweight facade around `xTaskCreatePinnedToCore` that lets you start/stop lambdas as FreeRTOS tasks with automatic cleanup.
 - **Queue (`EspHelperQueue.h`)** – Template wrapper over FreeRTOS queues with `send`/`receive` helpers.
 - **Semaphore (`EspHelperSemaphore.h`)** – Binary and counting semaphores with convenient RAII handling.

@@ -4,6 +4,12 @@
 
 Utility examples collect helpers that do not fall into JSON, FreeRTOS, networking, or display buckets. Currently this includes QR code rendering via the ESP-IDF `espressif/qrcode` component, DSP helpers powered by `esp_dsp`, the generic `esp_event` wrapper, and libsodium utilities.
 
+## Subdirectories
+- [QrCode](QrCode/README.md)
+- [Dsp](Dsp/README.md)
+- [Event](Event/README.md)
+- [Sodium](Sodium/README.md)
+
 - **QrCode (`EspHelperQrCode.h`)** – generate QR codes once and reuse the captured bitmap for ASCII output, serial printing, or custom displays such as M5Unified.
 - **Dsp (`EspHelperDsp.h`)** – real-valued FFT and FIR filters that wrap `esp_dsp` with Arduino-friendly buffers.
 - **Event (`EspHelperEvent.h`)** – manage `esp_event` loops, handlers, and postings with a minimal RAII wrapper.
