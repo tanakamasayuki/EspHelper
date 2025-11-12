@@ -2,12 +2,19 @@
 
 [日本語はこちら](README.ja.md)
 
-`EspHelper::CJsonDocument` wraps the ESP-IDF `cJSON` library with RAII semantics and Arduino-flavored helpers. Use it when you want the rich feature set of cJSON (parsing arbitrary JSON, duplicating nodes, pretty printing) but prefer not to manage lifetime manually.
+`EspHelper::CJsonDocument` wraps the ESP-IDF `cJSON` library with RAII semantics and Arduino-flavored helpers.
 
-## Highlights
-- Create objects/arrays with `NewObject()` / `NewArray()` and add primitive values or nested documents.
-- Parse existing text via `CJsonDocument::Parse()` and extract data with `getString` / `getNumber` / `getBool`.
-- `toString(true)` produces pretty output for debugging; `toString(false)` keeps it compact for transport.
+## Key Concepts
+- **Creation helpers** – `CJsonDocument::NewObject()` / `NewArray()` build empty containers, while `CJsonDocument::Parse()` converts JSON text into a tree.
+- **Ownership** – The destructor automatically calls `cJSON_Delete`, but you can transfer ownership via `release()` if another API needs the raw pointer.
+- **Strings** – To avoid guessing buffer sizes, you can read into `String` directly; fixed buffers are still supported via the explicit overloads.
 
-## Example overview
-- `BuildAndParse/BuildAndParse.ino` – builds a nested JSON payload, prints both compact and pretty versions, then parses it back to read key values.
+## API Reference
+- Lifetime: `bool valid()`, `void reset(cJSON *replacement = nullptr)`, `cJSON *release()`
+- Serialization: `String toString(bool pretty = false)`
+- Object mutation: `addString`, `addNumber`, `addBool`, `addNull`, `addObject`, `addArray`
+- Array mutation: `arrayAddNumber`, `arrayAddString`, `arrayAddBool`, `arrayAddNull`, `arrayAdd(CJsonDocument&&)`
+- Access: `getString`, `getNumber`, `getBool`, `arraySize`, `arrayItem`
+
+## Example Overview
+- `BuildAndParse/BuildAndParse.ino` – builds a nested object, prints both compact and pretty strings, then parses them back to retrieve values.

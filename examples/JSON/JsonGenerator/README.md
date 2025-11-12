@@ -11,6 +11,43 @@ This folder contains standalone Arduino sketches that demonstrate how to use `Es
 - **Reset before reuse** – `JsonGenerator` is stateful. After emitting JSON with `finish()`, call one of the `reset(...)` overloads to clear the internal state and (optionally) switch buffers or flush callbacks. If you forget to reset, subsequent writes will append to the previous document and the comma tracking will be incorrect.
 - **Buffer ownership vs streaming** – You can supply your own `char[]` buffer for maximum control, or construct the generator with a `Print` reference (`JsonGenerator(Print &out, size_t chunkSize)`) to stream data through the flush callback using a small internal buffer. Even in streaming mode, a chunk buffer is required because ESP-IDF’s generator always writes into a memory region before flushing.
 
+## API Reference
+
+### Constructors
+| Signature | Description |
+|-----------|-------------|
+| `JsonGenerator(char *buffer, size_t capacity, json_gen_flush_cb_t flush = nullptr, void *priv = nullptr)` | Use caller-supplied buffer. |
+| `JsonGenerator(char (&buffer)[N], ...)` | Template helper accepting stack arrays. |
+| `JsonGenerator(Print &out, size_t chunkSize = 128)` | Streaming mode with automatic chunk buffer. |
+
+### State / Access
+- `void reset(...)` overloads – change buffer/flush callback or reinitialize contents.
+- `int finish()` – finalize JSON and flush pending data; returns total length including `\\0`.
+- `char *data()` / `const char *c_str()` – view underlying buffer (after `finish()`).
+- `json_gen_str_t *raw()` – access the raw ESP-IDF structure when needed.
+
+### Object Helpers
+- `int startObject()`, `int endObject()`
+- `int pushObject(const char *name)`, `int popObject()`
+- `int setBool(const char *name, bool value)`
+- `int setInt(const char *name, int value)`
+- `int setFloat(const char *name, float value)`
+- `int setString(const char *name, const char *value or String&)`
+- `int setNull(const char *name)`
+
+### Array Helpers
+- `int startArray()`, `int endArray()`
+- `int pushArray(const char *name)`, `int popArray()`
+- `int arrayAddBool(bool value)`
+- `int arrayAddInt(int value)`
+- `int arrayAddFloat(float value)`
+- `int arrayAddString(const char *value or String&)`
+- `int arrayAddNull()`
+
+### Streaming Usage
+- `JsonGenerator(Print &out, size_t chunkSize)` automatically assigns a flush callback that writes to the provided `Print` instance.
+- Call `finish()` to flush the final chunk; emit a newline manually if desired (`Serial.println()` in the examples).
+
 ## Detailed Usage
 
 | Goal | Call sequence | JSON emitted |

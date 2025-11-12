@@ -2,13 +2,15 @@
 
 [日本語はこちら](README.ja.md)
 
-`EspHelperQrCode.h` wraps the ESP-IDF `espressif/qrcode` component so you can capture a QR bitmap once and reuse it. Choose your rendering strategy:
+`EspHelperQrCode.h` wraps the ESP-IDF `espressif/qrcode` component so you can generate once and render anywhere.
 
-- Use `toAscii()` to dump the QR code in a serial console (see `AsciiConsole`).
-- Iterate with `forEachModule()` to paint pixels on displays such as M5Unified (see `M5Display`).
+## API Reference
+- `bool generate(const char *text, int maxVersion = 10, int eccLevel = ESP_QRCODE_ECC_MED)` – Runs `esp_qrcode_generate` and captures the bitmap via the internal callback.
+- `bool ready() const` / `int size() const` – Inspect whether a QR bitmap is available and its side length.
+- `bool module(int x, int y) const` – Read individual modules (true = black).
+- `template <typename Fn> void forEachModule(Fn fn)` – Iterate through every module with a lambda `(x, y, bool on)`.
+- `String toAscii(const char *dark = "██", const char *light = "  ", int border = 2)` – Render an ASCII representation with configurable glyphs/border.
 
-## Example overview
-- `AsciiConsole/AsciiConsole.ino` – Generates a QR that encodes a URL and prints it using ASCII blocks.
-- `M5Display/M5Display.ino` – Renders a Wi-Fi provisioning QR on an M5 device via M5Unified.
-
-> **Note**: The display example depends on the [M5Unified](https://github.com/m5stack/M5Unified) library. Install it before building.
+## Example Overview
+- `AsciiConsole/AsciiConsole.ino` – Generates a QR that encodes a URL and prints it as ASCII art over `Serial`.
+- `M5Display/M5Display.ino` – Draws a Wi-Fi provisioning QR code on an M5 device using M5Unified.

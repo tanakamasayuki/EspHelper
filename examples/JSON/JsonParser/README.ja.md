@@ -6,13 +6,32 @@ ESP-IDFの`json_parser`コンポーネントをArduinoスケッチから扱い�
 
 ## 基本の考え方
 
-- **トークンバッファが必須** – `JsonParser parser(128);` のようにトークン数を指定して生成するか、`json_tok_t tokens[128]; JsonParser parser(tokens);` のように自前バッファを渡します。トークンはJSONの各プリミティブやオブジェクト／配列1つにつき少なくとも1個（オブジェクトなら自身1つ＋子要素分）消費するので、フィールド1つあたり4〜5トークンを目安に余裕を持って確保すると安定します。
-- **Parse→Query→End** – `parse(json)`でトークン化し、`get*`や`enterObject/enterArray`で値を取得、作業が終わったら`end()`で後片付けします。2回目の`parse()`を呼ぶ前にも`end()`されるので、連続利用も簡単です。
-- **オブジェクトと配列のヘルパー** – 現在のオブジェクトからフィールドを読むときは`getInt(\"foo\", value)`などを使います。配列内の値は`enterArray(\"pins\")`で入ってから`arrayGetInt(index, value)`で取得し、最後に`leaveArray()`で抜けます。必ず入ったら出る、を徹底してください。
-- **文字列の扱い** – `String`に受ける場合は必要な長さを先に問い合わせてから読み取るので、バッファサイズを予測する必要はありません。固定長バッファを使いたい場合は`char *`と`size`を引数に取るオーバーロードを利用してください。
+- **トークンバッファが必須** – `JsonParser parser(128);` のようにトークン数を指定するか、`json_tok_t tokens[128]; JsonParser parser(tokens);` のように自前の配列を渡します。フィールド数 × 4〜5 個を目安に余裕を持って確保してください。
+- **Parse → Query → End** – `parse(json)`でトークナイズし、`get*` や `enterObject/enterArray` で値を取得したら `end()` でクリーンアップします。2回目の `parse()` は自動的に前回の状態を `end()` します。
+- **オブジェクト/配列ヘルパー** – `getInt("foo", value)` は現在のオブジェクトのフィールドを読む関数です。配列内の値は `enterArray("pins")` で入ったあと `arrayGetInt(index, value)` で取得し、最後に `leaveArray()` を忘れずに。
+- **文字列ヘルパー** – `String` へ読み込む場合は必要な長さを先に問い合わせてからコピーするため、バッファサイズを推測する必要がありません。固定長バッファを使う場合は `char *` と `size` を引数に取るオーバーロードを利用してください。
+
+## APIリファレンス
+
+### コンストラクタ
+| シグネチャ | 説明 |
+|------------|------|
+| `JsonParser(json_tok_t *tokens, size_t tokenCount)` | 外部トークンバッファを借用 |
+| `JsonParser(json_tok_t (&tokens)[N])` | スタック配列を渡すテンプレート |
+| `JsonParser(size_t tokenCount)` | 内部的にトークンを確保 |
+
+### ライフサイクル/ナビゲーション
+- `parse(const char *json, size_t length = 0)` / `parse(const String&)`
+- `end()` – パーサ状態を解放
+- `enterObject(name)` / `leaveObject()`
+- `enterArray(name, int *numElements)` / `leaveArray()`
+- `arrayEnter(index)` / `arrayLeave()` など、ESP-IDFの関数に対応するAPIを提供
+
+### 値アクセス
+- オブジェクト: `getBool` / `getInt` / `getInt64` / `getFloat` / `getString`
+- 配列: `arrayGetBool` / `arrayGetInt` / `arrayGetFloat` / `arrayGetString`
+- 文字列取得は `json_obj_get_strlen` などで長さを問い合わせてからコピーするため安全です。
 
 ## 収録スケッチ
 
-- `BasicParse/BasicParse.ino` – ネストしたJSONからオブジェクト／配列を辿り、bool/int/float/stringを読み出して`Serial`へ表示します。
-
-どのスケッチもArduino-ESP32 v2.0.0以降を想定しており、追加のコンポーネント導入は不要です。このリポジトリを`~/Arduino/libraries`へ配置し、サンプルをそのままビルドしてください。
+- `BasicParse/BasicParse.ino` – ネストしたJSONからオブジェクト／配列を辿り、bool/int/float/stringを読み出して`Serial`へ出力します。

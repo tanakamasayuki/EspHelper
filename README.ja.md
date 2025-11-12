@@ -39,6 +39,8 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 - `examples/Utility/QrCode/M5Display` : M5UnifiedデバイスへWi-Fi設定QRコードを描画する例。
 - `examples/Utility/RgbLed/SimpleStrip` : 1個のRGB LEDを順番に点灯させる最小例。
 - `examples/Utility/RgbLed/MultiStrip` : 3個のRGB LEDでカラーWipeや一括点灯を行う例。
+
+各ヘルパーの公開APIは [APIリファレンス](docs/API_REFERENCE.md) を参照してください。
 - それぞれ最小限のコードで構成されているため、必要な部分だけを既存スケッチにコピーできます。
 
 ## ライセンス

@@ -11,6 +11,34 @@
 - **再利用時は必ず`reset()`** – `finish()`で出力した後は、`reset()`あるいは`reset(buffer, size, ...)`などのオーバーロードを呼んで内部状態を初期化してから次のJSONを生成してください。リセットしないまま書き足すと、カンマ挿入ルールやバッファ内容が壊れます。
 - **バッファ vs ストリーミング** – 固定長バッファを自前で用意して制御する方法と、`JsonGenerator(Print &out, size_t chunkSize)`で`Print`（Serialなど）へストリーミングする方法の2種類があります。ストリーミング時もESP-IDFの仕様上、小さな作業用バッファ（chunkSize）が必要です。
 
+## API リファレンス
+
+### コンストラクタ
+| シグネチャ | 説明 |
+|------------|------|
+| `JsonGenerator(char *buffer, size_t capacity, json_gen_flush_cb_t flush = nullptr, void *priv = nullptr)` | 手持ちバッファを利用 |
+| `JsonGenerator(char (&buffer)[N], ...)` | 配列をテンプレートで渡す補助 |
+| `JsonGenerator(Print &out, size_t chunkSize = 128)` | `Print`へ直接ストリーミング |
+
+### 状態管理 / アクセス
+- `reset(...)` – バッファ/フラッシュコールバックを変更したい場合に使用
+- `finish()` – JSONを閉じて`c_str()`で読める状態にしつつ総バイト数を返す
+- `data()` / `c_str()` / `raw()` – 生成中のバッファや生の `json_gen_str_t` へアクセス
+
+### オブジェクト操作
+- `startObject()`, `endObject()`
+- `pushObject(name)`, `popObject()`
+- `setBool(name, value)`, `setInt`, `setFloat`, `setString`, `setNull`
+
+### 配列操作
+- `startArray()`, `endArray()`
+- `pushArray(name)`, `popArray()`
+- `arrayAddBool(value)`, `arrayAddInt`, `arrayAddFloat`, `arrayAddString`, `arrayAddNull`
+
+### ストリーミング利用
+- `JsonGenerator(Print &, chunkSize)` で`rgbLedWrite`のように直接 `Print`（`Serial`など）へ書き出す
+- 最後に必ず `finish()` を呼んで最終チャンクをフラッシュし、必要なら `Serial.println()` などで改行を挿入する
+
 ## 詳しい使い方
 
 | 目的 | 呼び出し例 | 生成されるJSON |
