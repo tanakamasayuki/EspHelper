@@ -25,5 +25,8 @@ These sketches cover Arduino-friendly wrappers for ESP-IDF subsystems that live 
 - `StreamBuffer/SimpleStreamBuffer` – Demonstrates a telemetry-style byte pipe between two tasks.
 - `MessageBuffer/SimpleMessageBuffer` – Shows variable-length messages hopping between producer/consumer tasks.
 - `Queue/SimpleQueue` – Producer/consumer example passing integers between tasks.
+- `Queue/PollingQueue` – Shows how to poll (`wait = 0`) while doing other work between reads.
+- `Queue/TimeoutQueue` – Demonstrates finite waits and handling timeout events.
+- `Queue/BlockingQueue` – Uses `portMAX_DELAY` on both sides to block until space/data is available.
 - `Semaphore/Binary` – Two tasks alternating access via a binary semaphore.
 - `Mutex/SimpleMutex` – Demonstrates guarding shared state with a mutex.

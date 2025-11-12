@@ -13,4 +13,7 @@
 - `QueueHandle_t raw() const`
 
 ## Example Overview
-- `SimpleQueue/SimpleQueue.ino` – producer/consumer demo passing integers between tasks.
+- `SimpleQueue/SimpleQueue.ino` – Minimal producer/consumer loop with default (non-blocking send, 1s receive timeout).
+- `PollingQueue/PollingQueue.ino` – Demonstrates non-blocking polling (`wait = 0`) so the consumer can perform other work between checks.
+- `TimeoutQueue/TimeoutQueue.ino` – Uses a finite wait (750 ms) to show how to react when the queue stays empty for too long.
+- `BlockingQueue/BlockingQueue.ino` – Both producer and consumer use `portMAX_DELAY`, blocking indefinitely until space/data becomes available.

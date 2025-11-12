@@ -26,5 +26,8 @@
 - `StreamBuffer/SimpleStreamBuffer` – ストリームバッファを介してテレメトリ文字列を送受信する例。
 - `MessageBuffer/SimpleMessageBuffer` – メッセージバッファでNULL終端文字列を渡し、次のメッセージ長を確認する例。
 - `Queue/SimpleQueue` – プロデューサー/コンシューマー間で整数をやり取りする例。
+- `Queue/PollingQueue` – `wait = 0`でポーリングしながら別処理を行う例。
+- `Queue/TimeoutQueue` – 有限待ちを使い、タイムアウト時のハンドリングをログする例。
+- `Queue/BlockingQueue` – `portMAX_DELAY`で無限待ちし、空き待ち/データ待ちをブロッキングで処理する例。
 - `Semaphore/Binary` – バイナリセマフォでタスク同士の排他制御を行う例。
 - `Mutex/SimpleMutex` – ミューテックスで共有変数を保護する例。
