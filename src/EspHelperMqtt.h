@@ -121,7 +121,7 @@ class MqttClient {
   static void eventThunk(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data)
   {
     MqttClient *self = static_cast<MqttClient *>(handler_args);
-    if (!self || base != MQTT_EVENTS || event_data == nullptr)
+    if (!self || event_data == nullptr)
     {
       return;
     }
@@ -146,4 +146,3 @@ class MqttClient {
 };
 
 }  // namespace EspHelper
-
