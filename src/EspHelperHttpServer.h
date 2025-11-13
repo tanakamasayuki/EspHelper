@@ -102,7 +102,7 @@ class HttpServer {
     return httpd_resp_send_chunk(req, chunk, HTTPD_RESP_USE_STRLEN);
   }
 
-  static esp_err_t sendEmpty(httpd_req_t *req, httpd_resp_status_t status = HTTPD_200)
+  static esp_err_t sendEmpty(httpd_req_t *req, const char *status = HTTPD_200)
   {
     httpd_resp_set_status(req, status);
     return httpd_resp_send(req, nullptr, 0);
@@ -132,4 +132,3 @@ class HttpServer {
 };
 
 }  // namespace EspHelper
-
