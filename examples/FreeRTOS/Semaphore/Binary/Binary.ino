@@ -1,4 +1,5 @@
 #include <EspHelperSemaphore.h>
+#include <EspHelperTask.h>
 
 EspHelper::BinarySemaphore semaphore;
 EspHelper::Task taskOne;
@@ -9,7 +10,8 @@ void setup()
   Serial.begin(115200);
   semaphore.create();
 
-  taskOne.start("TaskOne", [] {
+  taskOne.start("TaskOne", []
+                {
     while (true)
     {
       semaphore.take();
@@ -17,10 +19,10 @@ void setup()
       delay(300);
       semaphore.give();
       delay(300);
-    }
-  });
+    } });
 
-  taskTwo.start("TaskTwo", [] {
+  taskTwo.start("TaskTwo", []
+                {
     while (true)
     {
       semaphore.take();
@@ -28,8 +30,7 @@ void setup()
       delay(300);
       semaphore.give();
       delay(300);
-    }
-  });
+    } });
 
   semaphore.give();
 }
