@@ -20,12 +20,7 @@ class EventLoop {
     {
       return false;
     }
-    esp_event_loop_handle_t handle = nullptr;
-    if (esp_event_loop_get_handle(&handle) != ESP_OK || handle == nullptr)
-    {
-      return false;
-    }
-    handle_ = handle;
+    handle_ = nullptr;
     owns_loop_ = false;
     default_loop_ = true;
     created_default_ = (err == ESP_OK);
@@ -66,7 +61,7 @@ class EventLoop {
     created_default_ = false;
   }
 
-  bool valid() const { return handle_ != nullptr; }
+  bool valid() const { return default_loop_ || handle_ != nullptr; }
 
   bool registerHandler(esp_event_base_t base,
                        int32_t id,
@@ -74,7 +69,15 @@ class EventLoop {
                        void *arg = nullptr,
                        esp_event_handler_instance_t *out_instance = nullptr)
   {
-    if (!handle_ || handler == nullptr)
+    if (handler == nullptr)
+    {
+      return false;
+    }
+    if (default_loop_)
+    {
+      return esp_event_handler_instance_register(base, id, handler, arg, out_instance) == ESP_OK;
+    }
+    if (!handle_)
     {
       return false;
     }
@@ -83,7 +86,15 @@ class EventLoop {
 
   bool unregisterHandler(esp_event_base_t base, int32_t id, esp_event_handler_instance_t instance)
   {
-    if (!handle_ || instance == nullptr)
+    if (instance == nullptr)
+    {
+      return false;
+    }
+    if (default_loop_)
+    {
+      return esp_event_handler_instance_unregister(base, id, instance) == ESP_OK;
+    }
+    if (!handle_)
     {
       return false;
     }
@@ -96,6 +107,10 @@ class EventLoop {
             size_t event_data_size = 0,
             TickType_t ticks_to_wait = portMAX_DELAY)
   {
+    if (default_loop_)
+    {
+      return esp_event_post(base, id, event_data, event_data_size, ticks_to_wait) == ESP_OK;
+    }
     if (!handle_)
     {
       return false;
@@ -113,4 +128,3 @@ class EventLoop {
 };
 
 }  // namespace EspHelper
-
