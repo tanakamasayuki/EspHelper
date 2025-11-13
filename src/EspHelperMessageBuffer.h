@@ -80,12 +80,20 @@ class MessageBuffer {
 
   size_t nextMessageSize() const
   {
-    return handle_ ? xMessageBufferNextLengthBytes(handle_) : 0;
+    if (!handle_)
+    {
+      return 0;
+    }
+    return xMessageBufferNextLengthBytes(handle_);
   }
 
   size_t spaceAvailable() const
   {
-    return handle_ ? xMessageBufferSpacesAvailable(handle_) : 0;
+    if (!handle_)
+    {
+      return 0;
+    }
+    return xMessageBufferSpacesAvailable(handle_);
   }
 
   bool reset()
