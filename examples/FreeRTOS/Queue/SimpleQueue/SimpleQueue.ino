@@ -1,4 +1,5 @@
 #include <EspHelperQueue.h>
+#include <EspHelperTask.h>
 
 EspHelper::Queue<int> queue;
 EspHelper::Task producer;
@@ -9,17 +10,18 @@ void setup()
   Serial.begin(115200);
   queue.create(5);
 
-  producer.start("Producer", [] {
+  producer.start("Producer", []
+                 {
     int value = 0;
     while (true)
     {
       queue.send(++value);
       Serial.printf("Produced %d\n", value);
       delay(500);
-    }
-  });
+    } });
 
-  consumer.start("Consumer", [] {
+  consumer.start("Consumer", []
+                 {
     int received;
     while (true)
     {
@@ -27,8 +29,7 @@ void setup()
       {
         Serial.printf("Consumed %d\n", received);
       }
-    }
-  });
+    } });
 }
 
 void loop()
