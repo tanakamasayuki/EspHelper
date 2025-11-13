@@ -5,6 +5,10 @@ EspHelper::BinarySemaphore isrSignal;
 EspHelper::Task ledTask;
 hw_timer_t *timer = nullptr;
 
+#ifndef LED_BUILTIN
+#define LED_BUILTIN 2
+#endif
+
 void IRAM_ATTR onTimer()
 {
   BaseType_t higherPriorityTaskWoken = pdFALSE;
@@ -21,10 +25,9 @@ void setup()
   pinMode(LED_BUILTIN, OUTPUT);
   isrSignal.create();
 
-  timer = timerBegin(0, 80, true);           // 1 µs tick
-  timerAttachInterrupt(timer, &onTimer, true);
-  timerAlarmWrite(timer, 500000, true);      // 500 ms
-  timerAlarmEnable(timer);
+  timer = timerBegin(1000000);            // 1 MHz resolution (1 µs tick)
+  timerAttachInterrupt(timer, &onTimer);
+  timerAlarm(timer, 500000, true, 0);     // fire every 500 ms
 
   ledTask.start("IsrBlink",
                 []
@@ -39,7 +42,7 @@ void setup()
                   }
                 });
 
-  isrSignal.give();  // allow first take
+  isrSignal.give(); // allow first take
 }
 
 void loop()
