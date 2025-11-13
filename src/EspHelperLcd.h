@@ -203,16 +203,21 @@ class LcdPanel {
       local.max_transfer_bytes = local.width * local.height * sizeof(uint16_t);
     }
 
-    spi_bus_config_t buscfg = {
-        .mosi_io_num = local.mosi_pin,
-        .miso_io_num = -1,
-        .sclk_io_num = local.sclk_pin,
-        .quadwp_io_num = -1,
-        .quadhd_io_num = -1,
-        .max_transfer_sz = static_cast<int>(local.max_transfer_bytes),
-        .flags = SPICOMMON_BUSFLAG_MASTER,
-        .intr_flags = 0,
-    };
+    spi_bus_config_t buscfg = {};
+    buscfg.mosi_io_num = local.mosi_pin;
+    buscfg.miso_io_num = -1;
+    buscfg.sclk_io_num = local.sclk_pin;
+    buscfg.quadwp_io_num = -1;
+    buscfg.quadhd_io_num = -1;
+    buscfg.data4_io_num = -1;
+    buscfg.data5_io_num = -1;
+    buscfg.data6_io_num = -1;
+    buscfg.data7_io_num = -1;
+    buscfg.data_io_default_level = false;
+    buscfg.max_transfer_sz = static_cast<int>(local.max_transfer_bytes);
+    buscfg.flags = SPICOMMON_BUSFLAG_MASTER;
+    buscfg.isr_cpu_id = ESP_INTR_CPU_AFFINITY_AUTO;
+    buscfg.intr_flags = 0;
     esp_err_t err = spi_bus_initialize(local.spi_host, &buscfg, SPI_DMA_CH_AUTO);
     if (err != ESP_OK && err != ESP_ERR_INVALID_STATE)
     {
@@ -221,20 +226,19 @@ class LcdPanel {
     owns_spi_bus_ = (err == ESP_OK);
     spi_host_ = local.spi_host;
 
-    esp_lcd_panel_io_spi_config_t io_config = {
-        .dc_gpio_num = local.dc_pin,
-        .cs_gpio_num = local.cs_pin,
-        .pclk_hz = static_cast<int>(local.pclk_hz),
-        .lcd_cmd_bits = 8,
-        .lcd_param_bits = 8,
-        .spi_mode = 0,
-        .trans_queue_depth = 10,
-        .on_color_trans_done = nullptr,
-        .user_ctx = nullptr,
-        .flags = {
-            .cs_high_active = 0,
-        },
-    };
+    esp_lcd_panel_io_spi_config_t io_config = {};
+    io_config.cs_gpio_num = local.cs_pin;
+    io_config.dc_gpio_num = local.dc_pin;
+    io_config.spi_mode = 0;
+    io_config.pclk_hz = static_cast<int>(local.pclk_hz);
+    io_config.trans_queue_depth = 10;
+    io_config.on_color_trans_done = nullptr;
+    io_config.user_ctx = nullptr;
+    io_config.lcd_cmd_bits = 8;
+    io_config.lcd_param_bits = 8;
+    io_config.cs_ena_pretrans = 0;
+    io_config.cs_ena_posttrans = 0;
+    io_config.flags.cs_high_active = 0;
 
     if (esp_lcd_new_panel_io_spi(local.spi_host, &io_config, &io_handle_) != ESP_OK)
     {
@@ -242,18 +246,12 @@ class LcdPanel {
       return false;
     }
 
-    vendor_st7789_.gap_x = local.x_offset;
-    vendor_st7789_.gap_y = local.y_offset;
-    vendor_st7789_.flags.use_qspi_interface = 0;
-    vendor_st7789_.flags.use_rgb565 = 1;
-    vendor_st7789_.flags.mirror_by_cmd = 1;
-
-    esp_lcd_panel_dev_config_t panel_config = {
-        .reset_gpio_num = local.rst_pin,
-        .color_space = ESP_LCD_COLOR_SPACE_RGB,
-        .bits_per_pixel = 16,
-        .vendor_config = &vendor_st7789_,
-    };
+    esp_lcd_panel_dev_config_t panel_config = {};
+    panel_config.reset_gpio_num = local.rst_pin;
+    panel_config.color_space = ESP_LCD_COLOR_SPACE_RGB;
+    panel_config.data_endian = LCD_RGB_DATA_ENDIAN_BIG;
+    panel_config.bits_per_pixel = 16;
+    panel_config.flags.reset_active_high = 0;
 
     if (esp_lcd_new_panel_st7789(io_handle_, &panel_config, &panel_handle_) != ESP_OK)
     {
@@ -266,6 +264,13 @@ class LcdPanel {
       esp_lcd_panel_reset(panel_handle_);
     }
     if (esp_lcd_panel_init(panel_handle_) != ESP_OK)
+    {
+      end();
+      return false;
+    }
+
+    esp_err_t gap_err = esp_lcd_panel_set_gap(panel_handle_, local.x_offset, local.y_offset);
+    if (gap_err != ESP_OK && gap_err != ESP_ERR_NOT_SUPPORTED)
     {
       end();
       return false;
@@ -350,12 +355,13 @@ class LcdPanel {
         .height = static_cast<uint8_t>(cfg.height),
     };
 
-    esp_lcd_panel_dev_config_t panel_config = {
-        .reset_gpio_num = cfg.rst_pin,
-        .color_space = ESP_LCD_COLOR_SPACE_MONOCHROME,
-        .bits_per_pixel = 1,
-        .vendor_config = &vendor_config,
-    };
+    esp_lcd_panel_dev_config_t panel_config = {};
+    panel_config.reset_gpio_num = cfg.rst_pin;
+    panel_config.color_space = ESP_LCD_COLOR_SPACE_MONOCHROME;
+    panel_config.data_endian = LCD_RGB_DATA_ENDIAN_BIG;
+    panel_config.bits_per_pixel = 1;
+    panel_config.flags.reset_active_high = 0;
+    panel_config.vendor_config = &vendor_config;
 
     if (esp_lcd_new_panel_ssd1306(io_handle_, &panel_config, &panel_handle_) != ESP_OK)
     {
@@ -386,7 +392,6 @@ class LcdPanel {
   i2c_port_t i2c_port_ = I2C_NUM_0;
   esp_lcd_panel_io_handle_t io_handle_ = nullptr;
   esp_lcd_panel_handle_t panel_handle_ = nullptr;
-  esp_lcd_panel_st7789_config_t vendor_st7789_{};
   PixelFormat pixel_format_ = PixelFormat::Unknown;
   int width_ = 0;
   int height_ = 0;
@@ -398,4 +403,3 @@ class LcdPanel {
 };
 
 }  // namespace EspHelper
-
