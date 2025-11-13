@@ -2,7 +2,6 @@
 
 #include <Arduino.h>
 
-extern "C" {
 #include <driver/gpio.h>
 #include <driver/i2c.h>
 #include <driver/spi_master.h>
@@ -10,7 +9,6 @@ extern "C" {
 #include <esp_lcd_panel_ops.h>
 #include <esp_lcd_panel_ssd1306.h>
 #include <esp_lcd_panel_st7789.h>
-}
 
 #include <vector>
 
