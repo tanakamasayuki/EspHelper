@@ -1,4 +1,5 @@
 #include <EspHelperMutex.h>
+#include <EspHelperTask.h>
 
 EspHelper::Mutex mutex;
 EspHelper::Task writerA;
@@ -10,7 +11,8 @@ void setup()
   Serial.begin(115200);
   mutex.create();
 
-  writerA.start("WriterA", [] {
+  writerA.start("WriterA", []
+                {
     while (true)
     {
       if (mutex.lock(100))
@@ -20,10 +22,10 @@ void setup()
         mutex.unlock();
       }
       delay(200);
-    }
-  });
+    } });
 
-  writerB.start("WriterB", [] {
+  writerB.start("WriterB", []
+                {
     while (true)
     {
       if (mutex.lock(100))
@@ -33,8 +35,7 @@ void setup()
         mutex.unlock();
       }
       delay(250);
-    }
-  });
+    } });
 }
 
 void loop()
