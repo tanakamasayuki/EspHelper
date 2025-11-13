@@ -25,9 +25,9 @@ void setup()
   pinMode(LED_BUILTIN, OUTPUT);
   isrSignal.create();
 
-  timer = timerBegin(1000000);            // 1 MHz resolution (1 µs tick)
+  timer = timerBegin(1000000); // 1 MHz resolution (1 µs tick)
   timerAttachInterrupt(timer, &onTimer);
-  timerAlarm(timer, 500000, true, 0);     // fire every 500 ms
+  timerAlarm(timer, 500000, true, 0); // fire every 500 ms
 
   ledTask.start("IsrBlink",
                 []

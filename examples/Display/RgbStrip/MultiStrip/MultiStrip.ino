@@ -30,7 +30,7 @@ void runningPixel(EspHelper::RgbStrip &strip, uint32_t color, uint16_t wait)
 
 void loop()
 {
-  fillBoth(EspHelper::RgbColor::Orange, 0x10A0FF);  // mix named and manual RGB
+  fillBoth(EspHelper::RgbColor::Orange, 0x10A0FF); // mix named and manual RGB
   delay(500);
 
   runningPixel(stripA, EspHelper::RgbColor::Purple, 80);

@@ -20,7 +20,7 @@ void setup()
                        if (mutex.lock(portMAX_DELAY))
                        {
                          snprintf(lastMessage, sizeof(lastMessage), "sensor reading %lu", ++counter);
-                         delay(300);  // pretend measurement time
+                         delay(300); // pretend measurement time
                          mutex.unlock();
                        }
                        delay(100);

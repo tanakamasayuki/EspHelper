@@ -4,7 +4,13 @@ constexpr size_t kSamples = 32;
 
 // Simple 7-tap moving-average window
 const float kAverageTaps[] = {
-    0.142857f, 0.142857f, 0.142857f, 0.142857f, 0.142857f, 0.142857f, 0.142857f,
+    0.142857f,
+    0.142857f,
+    0.142857f,
+    0.142857f,
+    0.142857f,
+    0.142857f,
+    0.142857f,
 };
 
 EspHelper::FirFilter fir;
@@ -16,7 +22,7 @@ void fillNoisyRamp()
   for (size_t i = 0; i < kSamples; ++i)
   {
     float ramp = static_cast<float>(i) / static_cast<float>(kSamples);
-    float noise = static_cast<float>(random(-100, 101)) / 500.0f;  // +/-0.2
+    float noise = static_cast<float>(random(-100, 101)) / 500.0f; // +/-0.2
     noisy[i] = ramp + noise;
   }
 }

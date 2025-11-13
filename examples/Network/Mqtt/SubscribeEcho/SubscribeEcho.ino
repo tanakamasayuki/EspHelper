@@ -13,23 +13,23 @@ void handleMqttEvent(const esp_mqtt_event_t &event)
 {
   switch (event.event_id)
   {
-    case MQTT_EVENT_CONNECTED:
-      Serial.println("MQTT connected, subscribing...");
-      mqtt.subscribe("esphelper/command/#", 1);
-      break;
-    case MQTT_EVENT_DATA:
-      if (event.data_len > 0)
-      {
-        size_t copyLen = std::min(static_cast<size_t>(event.data_len), sizeof(lastPayload) - 1);
-        memcpy(lastPayload, event.data, copyLen);
-        lastPayload[copyLen] = '\0';
-        pendingCommand = true;
-        Serial.printf("Topic: %.*s\n", event.topic_len, event.topic);
-        Serial.printf("Payload: %s\n", lastPayload);
-      }
-      break;
-    default:
-      break;
+  case MQTT_EVENT_CONNECTED:
+    Serial.println("MQTT connected, subscribing...");
+    mqtt.subscribe("esphelper/command/#", 1);
+    break;
+  case MQTT_EVENT_DATA:
+    if (event.data_len > 0)
+    {
+      size_t copyLen = std::min(static_cast<size_t>(event.data_len), sizeof(lastPayload) - 1);
+      memcpy(lastPayload, event.data, copyLen);
+      lastPayload[copyLen] = '\0';
+      pendingCommand = true;
+      Serial.printf("Topic: %.*s\n", event.topic_len, event.topic);
+      Serial.printf("Payload: %s\n", lastPayload);
+    }
+    break;
+  default:
+    break;
   }
 }
 

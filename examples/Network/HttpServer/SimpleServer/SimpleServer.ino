@@ -20,13 +20,14 @@ void setup()
   Serial.print("Ready at http://");
   Serial.println(WiFi.localIP());
 
-  server.onGet("/", [](httpd_req_t *req) {
+  server.onGet("/", [](httpd_req_t *req)
+               {
     const char *html = "<html><body><h1>EspHelper</h1><p>Hello from esp_http_server!</p></body></html>";
     httpd_resp_set_type(req, "text/html");
-    return httpd_resp_send(req, html, HTTPD_RESP_USE_STRLEN);
-  });
+    return httpd_resp_send(req, html, HTTPD_RESP_USE_STRLEN); });
 
-  server.onPost("/echo", [](httpd_req_t *req) {
+  server.onPost("/echo", [](httpd_req_t *req)
+                {
     char buf[256];
     int received = httpd_req_recv(req, buf, sizeof(buf));
     if (received <= 0)
@@ -35,8 +36,7 @@ void setup()
     }
     buf[received] = '\0';
     httpd_resp_set_type(req, "text/plain");
-    return httpd_resp_send(req, buf, received);
-  });
+    return httpd_resp_send(req, buf, received); });
 
   if (!server.start())
   {

@@ -19,14 +19,14 @@ void setup()
                    {
                      queue.send(messages[index]);
                      index = (index + 1) % 3;
-                     delay(1500);  // intentionally slow so the consumer times out sometimes
+                     delay(1500); // intentionally slow so the consumer times out sometimes
                    }
                  });
 
   timeoutConsumer.start("TimeoutConsumer",
                         []
                         {
-                          const TickType_t waitTicks = 750;  // milliseconds in Arduino builds
+                          const TickType_t waitTicks = 750; // milliseconds in Arduino builds
                           const uint32_t waitMs = 750;
                           const char *msg = nullptr;
                           while (true)

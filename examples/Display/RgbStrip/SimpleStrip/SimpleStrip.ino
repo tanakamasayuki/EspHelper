@@ -55,7 +55,7 @@ void loop()
 
   for (size_t i = 0; i < strip.size(); ++i)
   {
-    strip.setPixelColor(i, 0, 0, 128);  // manual RGB tuple
+    strip.setPixelColor(i, 0, 0, 128); // manual RGB tuple
   }
   strip.show();
   delay(400);

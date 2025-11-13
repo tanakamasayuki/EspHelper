@@ -18,9 +18,9 @@ void setup()
 
   pinnedTask.start("PinnedFunc",
                    pinnedFunction,
-                   4096, // stack size in bytes
-                   3,    // priority
-                   PRO_CPU_NUM);   // run on core 0
+                   4096,         // stack size in bytes
+                   3,            // priority
+                   PRO_CPU_NUM); // run on core 0
 
   lambdaTask.start("LambdaTask", []
                    {
@@ -30,9 +30,9 @@ void setup()
                        Serial.printf("Lambda count=%lu\n", counter++);
                        delay(500);
                      } },
-                   6144, // larger stack for this lambda
-                   2,    // priority
-                   APP_CPU_NUM);   // run on core 1
+                   6144,         // larger stack for this lambda
+                   2,            // priority
+                   APP_CPU_NUM); // run on core 1
 }
 
 void loop()

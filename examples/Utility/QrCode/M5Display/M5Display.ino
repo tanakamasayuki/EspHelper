@@ -21,10 +21,10 @@ void drawQrOnDisplay()
   M5.Display.setTextColor(TFT_BLACK);
   M5.Display.drawString("Scan me!", M5.Display.width() / 2, offsetY - 16);
 
-  qr.forEachModule([&](int x, int y, bool on) {
+  qr.forEachModule([&](int x, int y, bool on)
+                   {
     uint16_t color = on ? TFT_BLACK : TFT_WHITE;
-    M5.Display.fillRect(offsetX + x * scale, offsetY + y * scale, scale, scale, color);
-  });
+    M5.Display.fillRect(offsetX + x * scale, offsetY + y * scale, scale, scale, color); });
 }
 
 void setup()

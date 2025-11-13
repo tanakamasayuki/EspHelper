@@ -12,17 +12,17 @@ void handleMqttEvent(const esp_mqtt_event_t &event)
 {
   switch (event.event_id)
   {
-    case MQTT_EVENT_CONNECTED:
-      Serial.println("MQTT connected");
-      break;
-    case MQTT_EVENT_DISCONNECTED:
-      Serial.println("MQTT disconnected");
-      break;
-    case MQTT_EVENT_ERROR:
-      Serial.printf("MQTT error: %d\n", event.error_handle ? event.error_handle->error_type : -1);
-      break;
-    default:
-      break;
+  case MQTT_EVENT_CONNECTED:
+    Serial.println("MQTT connected");
+    break;
+  case MQTT_EVENT_DISCONNECTED:
+    Serial.println("MQTT disconnected");
+    break;
+  case MQTT_EVENT_ERROR:
+    Serial.printf("MQTT error: %d\n", event.error_handle ? event.error_handle->error_type : -1);
+    break;
+  default:
+    break;
   }
 }
 
