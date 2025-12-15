@@ -1,15 +1,19 @@
 #include <WiFi.h>
 #include <EspHelperHttpServer.h>
 
-const char *ssid = "YOUR_SSID";
-const char *password = "YOUR_PASSWORD";
+#if __has_include("arduino_secrets.h")
+#include "arduino_secrets.h"
+#else
+#define WIFI_SSID "YourSSID"     // Enter your Wi-Fi SSID here / Wi-FiのSSIDを入力
+#define WIFI_PASS "YourPassword" // Enter your Wi-Fi password here / Wi-Fiのパスワードを入力
+#endif
 
 EspHelper::HttpServer server;
 
 void setup()
 {
   Serial.begin(115200);
-  WiFi.begin(ssid, password);
+  WiFi.begin(WIFI_SSID, WIFI_PASS);
   Serial.print("Connecting to WiFi");
   while (WiFi.status() != WL_CONNECTED)
   {

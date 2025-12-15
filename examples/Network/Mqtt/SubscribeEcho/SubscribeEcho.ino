@@ -2,8 +2,12 @@
 #include <EspHelperMqtt.h>
 #include <cstring>
 
-const char *kSsid = "REPLACE_WITH_SSID";
-const char *kPassword = "REPLACE_WITH_PASSWORD";
+#if __has_include("arduino_secrets.h")
+#include "arduino_secrets.h"
+#else
+#define WIFI_SSID "YourSSID"     // Enter your Wi-Fi SSID here / Wi-FiのSSIDを入力
+#define WIFI_PASS "YourPassword" // Enter your Wi-Fi password here / Wi-Fiのパスワードを入力
+#endif
 
 EspHelper::MqttClient mqtt;
 bool pendingCommand = false;
@@ -35,7 +39,7 @@ void handleMqttEvent(const esp_mqtt_event_t &event)
 
 void connectWifi()
 {
-  WiFi.begin(kSsid, kPassword);
+  WiFi.begin(WIFI_SSID, WIFI_PASS);
   Serial.print("Connecting WiFi");
   while (WiFi.status() != WL_CONNECTED)
   {
