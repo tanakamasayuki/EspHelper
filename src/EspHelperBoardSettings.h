@@ -175,6 +175,7 @@ private:
         static char summary[320];
         size_t app_count = 0;
         size_t app_total = 0;
+        size_t data_total = 0;
         size_t nvs_total = 0;
         size_t otadata_total = 0;
         size_t spiffs_total = 0;
@@ -206,6 +207,7 @@ private:
             const esp_partition_t *p = esp_partition_get(it);
             if (p)
             {
+                data_total += p->size;
                 switch (p->subtype)
                 {
                 case ESP_PARTITION_SUBTYPE_DATA_NVS:
@@ -231,7 +233,7 @@ private:
             esp_partition_iterator_release(it);
         }
 
-        unsigned long flash_bytes = ESP.getFlashChipSize();
+        unsigned long flash_bytes = app_total + data_total;
         unsigned long flash_kb = flash_bytes / 1024UL;
         unsigned long app_kb = app_total / 1024UL;
         unsigned long spiffs_kb = spiffs_total / 1024UL;
