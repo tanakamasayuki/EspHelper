@@ -11,7 +11,7 @@ Flash Mode                              : QIO 80MHz
 Flash Size                              : 8MB (64Mb)
 Arduino Runs On                         : Core 1
 USB Firmware MSC On Boot                : Disabled
-PSRAM                                   : Enabled(OPI)
+PSRAM                                   : Enabled (OPI)
 Partition Scheme                        : 8MB (APP 3.2MB x2, SPIFFS 1.5MB, NVS 20KB, OTADATA 8KB)
 USB Mode                                : Hardware CDC and JTAG
 === end ===
