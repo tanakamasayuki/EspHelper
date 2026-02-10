@@ -413,7 +413,7 @@ private:
 #endif
         if (psram_mode)
         {
-            snprintf(psram_buf, sizeof(psram_buf), "Enabled(%s)", psram_mode);
+            snprintf(psram_buf, sizeof(psram_buf), "Enabled (%s)", psram_mode);
             return psram_buf;
         }
         return "Enabled";
