@@ -16,6 +16,7 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 - **Utility**: [概要](examples/Utility/README.ja.md) – 各ヘルパー: [QrCode](examples/Utility/QrCode/README.ja.md)、[Dsp](examples/Utility/Dsp/README.ja.md)、[Event](examples/Utility/Event/README.ja.md)、[Sodium](examples/Utility/Sodium/README.ja.md)
 - **Display**: [概要](examples/Display/README.ja.md) – 各ヘルパー: [Lcd](examples/Display/Lcd/README.ja.md)、[RgbStrip](examples/Display/RgbStrip/README.ja.md)
 - **Network**: [概要](examples/Network/README.ja.md) – 各ヘルパー: [Mqtt](examples/Network/Mqtt/README.ja.md)、[HttpServer](examples/Network/HttpServer/README.ja.md)
+- **Info**: [概要](examples/Info/README.ja.md) – 各ヘルパー: [BoardSettings](examples/Info/BoardSettings/BoardSettings.ino)
 - 各READMEにAPIリファレンスとサンプルコードがまとまっているので、必要なセクションへ直接アクセスしてください。
 
 ## 提供機能
@@ -38,6 +39,7 @@ EspHelperはESP32向けArduino環境からESP-IDFコンポーネントを扱い�
 - `EspHelperMessageBuffer.h`: FreeRTOSメッセージバッファを包み、メッセージ境界を保ったまま送受信できるヘルパー。
 - `EspHelperStreamBuffer.h`: FreeRTOSストリームバッファを簡潔に扱い、トリガーレベル設定や静的確保をサポートするラッパー。
 - `EspHelperRingbuf.h`: FreeRTOSの`ringbuf`に対して所有権管理・RAII受信アイテム・ISR対応ヘルパーを提供。
+- `EspHelperBoardSettings.h`: Arduino-ESP32のボード/USB/フラッシュ/パーティション設定を実行時にシリアルへ出力するヘルパー。
 
 ## 必要環境
 - Arduino-ESP32 v2.0.0以降、またはPlatformIOの`framework = arduino`環境。

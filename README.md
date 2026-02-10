@@ -16,6 +16,7 @@ EspHelper is a collection of single-header Arduino helpers that expose ESP-IDF c
 - **Utility**: [Overview](examples/Utility/README.md) – Helpers: [QrCode](examples/Utility/QrCode/README.md), [Dsp](examples/Utility/Dsp/README.md), [Event](examples/Utility/Event/README.md), [Sodium](examples/Utility/Sodium/README.md)
 - **Display**: [Overview](examples/Display/README.md) – Helpers: [Lcd](examples/Display/Lcd/README.md), [RgbStrip](examples/Display/RgbStrip/README.md)
 - **Network**: [Overview](examples/Network/README.md) – Helpers: [Mqtt](examples/Network/Mqtt/README.md), [HttpServer](examples/Network/HttpServer/README.md)
+- **Info**: [Overview](examples/Info/README.md) – Helpers: [BoardSettings](examples/Info/BoardSettings/BoardSettings.ino)
 
 ## Modules
 - `EspHelperJsonGenerator.h`: Arduino-style facade over `espressif/json_generator`, including static buffers, streaming, and reset patterns.
@@ -37,6 +38,7 @@ EspHelper is a collection of single-header Arduino helpers that expose ESP-IDF c
 - `EspHelperMessageBuffer.h`: Convenience layer over FreeRTOS message buffers that preserves per-message framing and exposes peek/space helpers.
 - `EspHelperStreamBuffer.h`: Arduino wrapper for FreeRTOS stream buffers, ideal for byte pipes between tasks or ISRs (with optional trigger levels and static allocation).
 - `EspHelperRingbuf.h`: RAII helpers for FreeRTOS `ringbuf`, covering dynamic/static creation, ISR-safe send/receive, and auto-returned items.
+- `EspHelperBoardSettings.h`: Serial dump helper for Arduino-ESP32 board, USB, flash, and partition settings at runtime.
 
 ## Requirements
 - Arduino core for ESP32 (v2.0.0 or newer) or a PlatformIO environment targeting `esp32`.
