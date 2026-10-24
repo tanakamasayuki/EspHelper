@@ -1,3 +1,5 @@
+// en: Register and post on the default event loop
+// ja: 既定イベント ループへHandler登録とPostを行う
 #include <EspHelperEvent.h>
 
 ESP_EVENT_DECLARE_BASE(APP_EVENT_BASE);

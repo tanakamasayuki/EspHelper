@@ -1,3 +1,5 @@
+// en: Generate random bytes and print their hexadecimal form
+// ja: 乱数のバイト列を生成し16進数で表示する
 #include <EspHelperSodium.h>
 
 void setup()

@@ -1,3 +1,5 @@
+// en: Configure task parameters and lambda entry points
+// ja: タスクの設定とラムダの入口を指定する
 #include <EspHelperTask.h>
 
 EspHelper::Task pinnedTask;
@@ -16,6 +18,8 @@ void setup()
 {
   Serial.begin(115200);
 
+  // en: Start work using the configured entry point; the context and objects must remain valid while it runs.
+  // ja: 設定した入口から処理を開始します。実行中はコンテキストとオブジェクトの寿命を保ちます。
   pinnedTask.start("PinnedFunc",
                    pinnedFunction,
                    4096,         // stack size in bytes

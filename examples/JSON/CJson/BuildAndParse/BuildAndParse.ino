@@ -1,3 +1,5 @@
+// en: Build a JSON object and parse its fields
+// ja: JSON オブジェクトを作って項目を解析する
 #include <EspHelperCJson.h>
 
 void setup()

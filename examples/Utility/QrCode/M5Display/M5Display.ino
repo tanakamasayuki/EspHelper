@@ -1,3 +1,5 @@
+// en: Render generated QR modules on an M5 display
+// ja: 生成したQRモジュールをM5画面へ描く
 #include <M5Unified.h>
 #include <EspHelperQrCode.h>
 

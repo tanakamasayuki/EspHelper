@@ -1,3 +1,5 @@
+// en: Compute a spectrum from a synthetic sampled signal
+// ja: 模擬サンプル信号からSpectrumを計算する
 #include <EspHelperDsp.h>
 
 constexpr size_t kFftSize = 256;
@@ -30,6 +32,8 @@ void setup()
   Serial.begin(115200);
   fillTestWave();
 
+  // en: Initialize this component after its prerequisites; inspect the returned status where provided.
+  // ja: 前提となる機器を準備してから初期化し、結果を返すAPIでは成否を確認します。
   if (!fft.begin(kFftSize, EspHelper::RealFft::WindowType::Hann))
   {
     Serial.println(F("Failed to init RealFft (check esp_dsp support)."));
@@ -39,6 +43,8 @@ void setup()
     }
   }
 
+  // en: Supply the configured number and format of samples before reading the transformed result.
+  // ja: 設定した数と形式のサンプルを渡してから変換結果を読みます。
   if (fft.compute(timeDomain, spectrum, fft.spectrumSize()))
   {
     printStrongestBins(16);

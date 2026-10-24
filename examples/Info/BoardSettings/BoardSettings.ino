@@ -1,3 +1,5 @@
+// en: Print the selected board settings
+// ja: 選択したボードの設定を表示する
 #include "EspHelperBoardSettings.h"
 
 /*

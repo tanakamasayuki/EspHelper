@@ -1,3 +1,5 @@
+// en: Update two separately configured RGB strips
+// ja: 別々に設定した2本のRGB Stripを更新する
 #include <EspHelperRgbStrip.h>
 
 EspHelper::RgbStrip stripA(2, 16, 180, 50);
@@ -12,6 +14,8 @@ void fillBoth(uint32_t colorA, uint32_t colorB)
 {
   stripA.fill(colorA);
   stripB.fill(colorB);
+  // en: Render the chosen generated scene after display and screen initialization.
+  // ja: DisplayとScreenの初期化後に、選んだ生成Sceneを描きます。
   stripA.show();
   stripB.show();
 }

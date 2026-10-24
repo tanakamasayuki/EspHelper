@@ -1,3 +1,5 @@
+// en: Exercise JSON object, array and streaming generation
+// ja: JSONのオブジェクト・配列・Stream出力を試す
 #include <EspHelperJsonGenerator.h>
 
 namespace
@@ -75,6 +77,8 @@ namespace
 
     generator.endArray(); // end root array
 
+    // en: Finalize the generated structure and check capacity/error status before using the output.
+    // ja: 生成中の構造を完了し、容量／Errorを確認してから出力を使います。
     int totalWithNull = generator.finish();
     Serial.printf("\n[cycle %d] buffer=%p capacity=%u bytes\n", cycle, static_cast<void *>(generator.data()),
                   static_cast<unsigned>(generator.capacity()));

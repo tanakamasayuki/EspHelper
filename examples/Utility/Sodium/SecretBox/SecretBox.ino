@@ -1,3 +1,5 @@
+// en: Encrypt and authenticate a message with SecretBox
+// ja: SecretBoxでメッセージを暗号化・認証する
 #include <EspHelperSodium.h>
 
 EspHelper::SecretBox secretBox;
@@ -41,6 +43,8 @@ void setup()
   const size_t plainLen = strlen(message);
   const size_t cipherLen = plainLen + crypto_secretbox_MACBYTES;
 
+  // en: Reserve authentication overhead as well as plaintext space and retain the generated nonce.
+  // ja: 平文だけでなく認証用の領域も確保し、生成Nonceを保持します。
   if (!secretBox.encrypt(reinterpret_cast<const uint8_t *>(message), plainLen, ciphertext, nonce))
   {
     Serial.println(F("Encryption failed"));
@@ -50,6 +54,8 @@ void setup()
   printHex("Nonce:", nonce, crypto_secretbox_NONCEBYTES);
   printHex("Ciphertext:", ciphertext, cipherLen);
 
+  // en: Use plaintext only if authentication succeeds; failure does not yield trusted output.
+  // ja: 認証成功時だけ平文を使います。失敗した出力は信頼しません。
   if (secretBox.decrypt(ciphertext, cipherLen, nonce, decrypted))
   {
     decrypted[plainLen] = '\0';

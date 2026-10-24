@@ -4,6 +4,8 @@
 
 EspHelper is a collection of single-header Arduino helpers that expose ESP-IDF capabilities with lightweight, idiomatic APIs. Drop the `.h` you need into a sketch whenever you want Arduino-style ergonomics but still reach for the power of the underlying ESP-IDF components.
 
+Start with the [example workflow](docs/GUIDE_EXAMPLES.md) and [individual example READMEs](examples/README.md) for setup, API sequence, verification and adaptation notes.
+
 ## Features
 - Header-only wrappers: drop the `.h` file you need into a sketch without pulling extra dependencies.
 - Arduino-friendly defaults: utilities work with `Print`, `String`, and familiar Arduino idioms.

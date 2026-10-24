@@ -1,3 +1,5 @@
+// en: Post data to a separately created event loop
+// ja: 別に作ったイベント ループへデータを送る
 #include <EspHelperEvent.h>
 
 ESP_EVENT_DECLARE_BASE(SENSOR_EVENT_BASE);

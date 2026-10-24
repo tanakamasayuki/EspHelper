@@ -1,3 +1,5 @@
+// en: Write generated JSON directly to Serial
+// ja: 生成するJSONをシリアルへ直接出力する
 #include <EspHelperJsonGenerator.h>
 
 void setup()
@@ -18,6 +20,8 @@ void loop()
   }
   json.popArray();
   json.endObject();
+  // en: Finalize the generated structure and check capacity/error status before using the output.
+  // ja: 生成中の構造を完了し、容量／Errorを確認してから出力を使います。
   json.finish();
 
   Serial.println();

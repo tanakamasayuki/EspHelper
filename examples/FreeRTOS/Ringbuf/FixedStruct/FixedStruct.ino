@@ -1,3 +1,5 @@
+// en: Transfer a fixed structure using a no-split ring buffer
+// ja: 分割しないRingbufferで固定構造体を渡す
 #include <EspHelperRingbuf.h>
 
 struct SensorPacket
@@ -25,8 +27,12 @@ void loop()
   packet.sequence++;
   packet.temperature = 24.5f + (millis() % 1000) / 1000.0f;
   packet.humidity = 40.0f + (millis() % 500) / 1000.0f;
+  // en: Submit the supplied data and check the API-specific result; acceptance is different from later processing.
+  // ja: データを渡して対象APIの結果を確認します。受理されたことと後の処理完了は別です。
   ringbuf.send(&packet, sizeof(packet));
 
+  // en: Consume output only after a successful receive; a timeout does not produce a new valid item.
+  // ja: 受信成功を確認してから出力を使います。時間切れでは新しい有効値は得られません。
   auto item = ringbuf.receive(10);
   if (item.valid() && item.size() == sizeof(SensorPacket))
   {

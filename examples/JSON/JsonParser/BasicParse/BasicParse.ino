@@ -1,3 +1,5 @@
+// en: Navigate and read JSON object and array values
+// ja: JSONのオブジェクトと配列へ移動して値を読む
 #include <EspHelperJsonParser.h>
 
 const char *kSample = R"JSON(

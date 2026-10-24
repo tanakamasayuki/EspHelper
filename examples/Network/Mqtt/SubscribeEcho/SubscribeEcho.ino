@@ -1,3 +1,5 @@
+// en: Subscribe and echo MQTT message events
+// ja: MQTTを購読し受信イベントから応答する
 #include <WiFi.h>
 #include <EspHelperMqtt.h>
 #include <cstring>
@@ -60,6 +62,8 @@ void setup()
   config.credentials.client_id = "EspHelperSubscriber";
 
   mqtt.setEventCallback(handleMqttEvent);
+  // en: Initialize this component after its prerequisites; inspect the returned status where provided.
+  // ja: 前提となる機器を準備してから初期化し、結果を返すAPIでは成否を確認します。
   if (!mqtt.begin(config) || !mqtt.start())
   {
     Serial.println("Failed to start MQTT client");

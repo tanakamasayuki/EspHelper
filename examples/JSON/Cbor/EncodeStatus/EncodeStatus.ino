@@ -1,3 +1,5 @@
+// en: Encode a status map into a bounded CBOR buffer
+// ja: 容量付きバッファへ状態をCBORで書き込む
 #include <EspHelperCbor.h>
 
 uint8_t buffer[128];
@@ -15,6 +17,8 @@ void setup()
 {
   Serial.begin(115200);
   EspHelper::CborWriter writer;
+  // en: Initialize this component after its prerequisites; inspect the returned status where provided.
+  // ja: 前提となる機器を準備してから初期化し、結果を返すAPIでは成否を確認します。
   if (!writer.begin(buffer, sizeof(buffer)))
   {
     Serial.println("Failed to init CborWriter");

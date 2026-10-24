@@ -1,3 +1,5 @@
+// en: Set pixel colors and transfer them to an RGB strip
+// ja: RGB Stripの色を設定して実機へ転送する
 #include <EspHelperRgbStrip.h>
 
 constexpr uint8_t kStripPin = 2;
@@ -28,6 +30,8 @@ void setup()
 void fillWithPalette()
 {
   strip.fill(EspHelper::RgbColor::White);
+  // en: Render the chosen generated scene after display and screen initialization.
+  // ja: DisplayとScreenの初期化後に、選んだ生成Sceneを描きます。
   strip.show();
   delay(400);
 

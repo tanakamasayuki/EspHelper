@@ -1,3 +1,5 @@
+// en: Smooth a sample sequence with an FIR filter
+// ja: FIR Filterでサンプル列を平滑化する
 #include <EspHelperDsp.h>
 
 constexpr size_t kSamples = 32;
@@ -41,6 +43,8 @@ void setup()
   Serial.begin(115200);
   randomSeed(esp_random());
 
+  // en: Initialize this component after its prerequisites; inspect the returned status where provided.
+  // ja: 前提となる機器を準備してから初期化し、結果を返すAPIでは成否を確認します。
   if (!fir.begin(kAverageTaps, sizeof(kAverageTaps) / sizeof(kAverageTaps[0])))
   {
     Serial.println(F("Failed to init FIR filter"));

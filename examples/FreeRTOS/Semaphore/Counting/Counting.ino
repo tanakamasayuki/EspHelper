@@ -1,3 +1,5 @@
+// en: Limit available work slots with a counting semaphore
+// ja: Counting Semaphoreで利用可能な枠を管理する
 #include <EspHelperSemaphore.h>
 #include <EspHelperTask.h>
 
@@ -8,6 +10,8 @@ EspHelper::Task workers[3];
 void setup()
 {
   Serial.begin(115200);
+  // en: Allocate/create the resource before any task or callback relies on it; handle creation failure.
+  // ja: タスクやコールバックが使う前に資源を作り、生成失敗にも対応します。
   slots.create(2, 2);  // allow two concurrent jobs
 
   for (int i = 0; i < 3; ++i)

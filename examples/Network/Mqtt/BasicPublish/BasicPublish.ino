@@ -1,3 +1,5 @@
+// en: Publish a value after connecting to an MQTT broker
+// ja: MQTT Brokerへ接続して値をPublishする
 #include <WiFi.h>
 #include <EspHelperMqtt.h>
 
@@ -53,6 +55,8 @@ void setup()
   config.credentials.client_id = "EspHelperBasicPublisher";
 
   mqtt.setEventCallback(handleMqttEvent);
+  // en: Initialize this component after its prerequisites; inspect the returned status where provided.
+  // ja: 前提となる機器を準備してから初期化し、結果を返すAPIでは成否を確認します。
   if (!mqtt.begin(config) || !mqtt.start())
   {
     Serial.println("Failed to start MQTT client");

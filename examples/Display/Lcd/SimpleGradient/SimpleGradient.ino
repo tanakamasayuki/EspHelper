@@ -1,3 +1,5 @@
+// en: Draw a gradient through the configured LCD wrapper
+// ja: 設定したLCDラッパーでグラデーションを描く
 #include <EspHelperLcd.h>
 #include <vector>
 
@@ -17,6 +19,8 @@ void setup()
   cfg.height = 240;
   cfg.pclk_hz = 40 * 1000 * 1000;
 
+  // en: Initialize this component after its prerequisites; inspect the returned status where provided.
+  // ja: 前提となる機器を準備してから初期化し、結果を返すAPIでは成否を確認します。
   if (!lcd.begin(cfg))
   {
     Serial.println("Failed to init ST7789");

@@ -1,3 +1,5 @@
+// en: Decode fields from a CBOR status map
+// ja: CBORの状態Mapから項目を読み出す
 #include <EspHelperCbor.h>
 
 uint8_t buffer[128];
@@ -5,6 +7,8 @@ uint8_t buffer[128];
 void encodeSample()
 {
   EspHelper::CborWriter writer;
+  // en: Initialize this component after its prerequisites; inspect the returned status where provided.
+  // ja: 前提となる機器を準備してから初期化し、結果を返すAPIでは成否を確認します。
   writer.begin(buffer, sizeof(buffer));
   writer.startMap(3);
   writer.addKeyValue("device", "esp32");

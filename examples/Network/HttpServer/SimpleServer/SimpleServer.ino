@@ -1,3 +1,5 @@
+// en: Handle GET and POST through the HTTP wrapper
+// ja: HTTPラッパーでGETとPOSTを処理する
 #include <WiFi.h>
 #include <EspHelperHttpServer.h>
 
@@ -42,6 +44,8 @@ void setup()
     httpd_resp_set_type(req, "text/plain");
     return httpd_resp_send(req, buf, received); });
 
+  // en: Start work using the configured entry point; the context and objects must remain valid while it runs.
+  // ja: 設定した入口から処理を開始します。実行中はコンテキストとオブジェクトの寿命を保ちます。
   if (!server.start())
   {
     Serial.println("Failed to start HTTP server");

@@ -1,3 +1,5 @@
+// en: Draw a checker pattern on an SSD1306 display
+// ja: SSD1306へ市松模様を描く
 #include <EspHelperLcd.h>
 #include <vector>
 
@@ -14,6 +16,8 @@ void setup()
   cfg.height = 64;
   cfg.address = 0x3C;
 
+  // en: Initialize this component after its prerequisites; inspect the returned status where provided.
+  // ja: 前提となる機器を準備してから初期化し、結果を返すAPIでは成否を確認します。
   if (!oled.begin(cfg))
   {
     Serial.println("Failed to init SSD1306");

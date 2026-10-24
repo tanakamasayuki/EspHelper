@@ -1,3 +1,5 @@
+// en: Encode a QR code and print it as console art
+// ja: QRを符号化してConsoleの文字で表示する
 #include <EspHelperQrCode.h>
 
 EspHelper::QrCodeBitmap qr;
